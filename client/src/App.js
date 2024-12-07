@@ -8,8 +8,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/freight" element={<Freight />} />
-        {/* <Route path="/login-form" element={<Login />} /> */}
-        {/* <Route path="/home" element={<Freight />} /> */}
       </Routes>
     </Router>
   );
