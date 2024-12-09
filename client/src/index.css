@@ -1,0 +1,33 @@
+/* index.css */
+
+/* Reset some default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set a consistent font and background */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa; /* Light gray background */
+  color: #212529; /* Dark text */
+  line-height: 1.6;
+}
+
+/* A consistent look for links */
+/* a {
+  text-decoration: none;
+  color: inherit;
+} */
+
+/* a:hover {
+  text-decoration: underline;
+} */
+
+/* Full-page container */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

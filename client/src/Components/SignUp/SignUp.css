@@ -1,0 +1,151 @@
+/* Base styles for the page */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background image styling */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../../Images/background.jpg") no-repeat center center;
+  background-size: cover;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+/* Container styling */
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+/* Logo styling */
+.logo-container {
+  margin-bottom: 20px;
+}
+
+.logo {
+  max-width: 220px;
+  height: auto;
+}
+
+/* Form styles */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  
+}
+
+.form-control {
+  margin-bottom: 17px;
+  width: 100%;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 17px;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+
+/* Buttons */
+.signup-button{
+  width: 100%;
+  padding: 10px 10px;
+  font-size: 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+
+.signup-button:hover {
+  background-color: #45a049;
+}
+
+p {
+  text-align: center;
+  margin-top: 13px;
+}
+
+/* Links */
+
+/* Error message styling */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+      padding: 26px 36px;
+      max-width: 90%;
+  }
+
+  .logo {
+      max-width: 160px;
+      height: auto;
+  }
+
+  h2 {
+      font-size: 22px;
+  }
+
+  input[type="text"],
+  select {
+      font-size: 14px;
+  }
+
+  .signup-button{
+      font-size: 14px;
+  }
+}
