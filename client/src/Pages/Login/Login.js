@@ -29,6 +29,7 @@ const Login = ()=>{
                 withCredentials: true
             });
             alert(response.data.message);
+            navigate('/home');
             
         }catch(error){
             alert(error.response.data.message);

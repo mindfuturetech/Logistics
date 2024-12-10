@@ -15,7 +15,7 @@ body::before {
 /* Container styling */
 .container {
   max-width: 500px;
-  margin: 50px auto;
+  margin: 25px auto;
   background: #fff;
   padding: 30px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

@@ -1,5 +1,5 @@
 body{
-    overflow: hidden; /* Add this to prevent scrolling */
+    overflow:auto; /* Add this to prevent scrolling */
 }
 
 body::before {
@@ -19,7 +19,7 @@ body::before {
 /* Container styling */
 .login-container {
     max-width: 500px;
-    margin: 50px auto;
+    margin: 20px auto;
     background: #fff;
     padding: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

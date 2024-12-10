@@ -31,7 +31,7 @@ const SignUp = () => {
         alert(response.data.message);
         console.log(`Form submitted with ${username} and ${profile}`);
 
-        navigate('/login');
+        navigate('/');
         }catch(error){
             alert(error.response.data.message);
         }
