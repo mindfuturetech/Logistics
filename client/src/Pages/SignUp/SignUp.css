@@ -1,17 +1,4 @@
-/* Base styles for the page */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-/* Background image styling */
 body::before {
   content: "";
   position: fixed;
@@ -114,20 +101,20 @@ p {
 /* Links */
 
 /* Error message styling */
-.error-message {
+/* .error-message {
   color: red;
   font-size: 14px;
   margin-top: -10px;
   margin-bottom: 10px;
   text-align: left;
-}
+} */
 
 
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .container {
-      padding: 26px 36px;
+      padding: 28px 35px;
       max-width: 90%;
   }
 

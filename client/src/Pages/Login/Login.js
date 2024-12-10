@@ -2,13 +2,14 @@ import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import logo from '../../Images/logo.jpg';
-import '../Login/Login.css';
-
+import './Login.css';
+import ResetPassword from '../../Components/ResetPassword/ResetPassword';
 
 axios.defaults.baseURL = 'http://localhost:5000/logistics';
 
 
 const Login = ()=>{
+    const [showResetModal, setShowResetModal] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -72,6 +73,14 @@ const Login = ()=>{
                     style={{cursor:'pointer', color:'blue', textDecoration:'underline'}}
                 >Signup</span>    
             </p>
+            <p className='Reset-text'>
+                <span 
+                    onClick={() => setShowResetModal(true)}
+                    style={{cursor:'pointer', color:'blue', textDecoration:'underline'}}
+                >Reset Password</span>
+            </p>
+
+            {showResetModal && <ResetPassword onClose={() => setShowResetModal(false)} />}
         </div>
     );
 };

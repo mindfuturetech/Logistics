@@ -1,7 +1,7 @@
 import './App.css';
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom'
-import SignUp from './Components/SignUp/SignUp';
-import Login from './Components/Login/Login';
+import SignUp from './Pages/SignUp/SignUp';
+import Login from './Pages/Login/Login';
 
 function App() {
   return (
