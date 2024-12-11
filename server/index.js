@@ -13,7 +13,9 @@ const route = require('./router');
 // Middleware
 app.use(cors({
     origin: 'http://localhost:3000', // Your frontend local URL
-    credentials: true
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'] 
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

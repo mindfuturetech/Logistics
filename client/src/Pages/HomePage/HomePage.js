@@ -1,7 +1,30 @@
 import React from 'react';
 import './HomePage.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+ 
+import Cookies from 'js-cookie';
+import { useAuth } from '../../Auth/AuthContext';
+
+axios.defaults.baseURL = 'http://localhost:5000/logistics';
 
 const HomePage = () => {
+    const {isAuthenticated, setIsAuthenticated} = useAuth();
+    const navigate = useNavigate();
+    const handleLogout = async()=>{
+        try{
+            const response = await axios.post('/logout',{},{
+                withCredentials:true
+            });
+            if (response.status === 200) {
+                setIsAuthenticated(false);
+                // Cookies.remove('isAuthenticated');
+                navigate('/');
+            }
+        }catch(error){
+            console.error('Error logging out',error);
+        }
+    }
   return (
     <div>
       <p>What is Lorem Ipsum?
@@ -37,7 +60,7 @@ predefined chunks as necessary, making this the first true generator on the Inte
  combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is
   therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
 
-    {/* <button onClick={()=>navigate('/logout')}>Logout</button> */}
+    <button onClick={()=>handleLogout()}>Logout</button>
     </div>
   )
 }

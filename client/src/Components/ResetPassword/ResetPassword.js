@@ -19,7 +19,9 @@ const ResetPassword = ({onClose}) => {
       }
 
       try{
-        const response = await axios.post('/reset-password',{username,currentPassword,newPassword,retypePassword});
+        const response = await axios.post('/reset-password',{username,currentPassword,newPassword,retypePassword},{
+            withCredentials: true
+        });
         onClose();
 
         setTimeout(() => {
