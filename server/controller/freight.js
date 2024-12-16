@@ -5,7 +5,7 @@ async function ListFreight(req, res) {
     try {
         const fetchedList = await FreightModel.find({});
         let resultData = [], result = {};
-        console.log("Document fetched:", fetchedList, typeof fetchedList);
+        console.log("Document fetched:", fetchedList, typeof(fetchedList));
 
         if (!fetchedList || fetchedList.length === 0) 
             return res.status(404).send("No data found");
@@ -21,7 +21,7 @@ async function ListFreight(req, res) {
         console.log("resultData::>", resultData);
         res.status(200).json(resultData);
     } catch (err) {
-        console.error("Error fetching documents:", err);
+        console.error("Error fetching freight documents:", err);
         res.status(500).send(err);
     }
 }

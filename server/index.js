@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const route = require('./router');
+const multer = require('./multer/multer')
 
 require('dotenv').config();
 
@@ -22,7 +23,7 @@ app.get("/",(req, res) => {
   res.send("<h2>Logistics app by MFT.<h2>")
 })
 
-app.use("/logistic",route);
+app.use("/logistics",route);
 
 connectDB();
 
