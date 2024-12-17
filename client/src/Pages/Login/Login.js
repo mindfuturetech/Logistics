@@ -43,12 +43,7 @@ const Login = ()=>{
         );
             // alert(response.data.message);
             if (response.status === 200) {
-                 setIsAuthenticated(true); // This will now also set the cookie
-                //  Cookies.set('isAuthenticated', 'true', { 
-                //     secure: false, 
-                //     sameSite: 'lax', 
-                //     expires: 10 })// 10 days;
-                //     console.log(Cookies.get('isAuthenticated'));                 
+                 setIsAuthenticated(true); // This will now also set the cookie              
                     navigate('/home');
             }
             
@@ -72,7 +67,7 @@ const Login = ()=>{
     return(
         <div className='login-container'>
             <div className='logo-container'>
-                <img src={logo} alt='logo' className='logo'/>
+                <img src={logo} alt='logo' className='logo1'/>
             </div>
             <h2>Login</h2>
 

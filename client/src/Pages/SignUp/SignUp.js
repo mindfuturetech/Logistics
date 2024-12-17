@@ -41,7 +41,7 @@ const SignUp = () => {
   return (
     <div className='container'>
         <div className='logo-container'>
-        <img src ={logo} alt ='logo' className='logo'/>
+        <img src ={logo} alt ='logo' className='logo1'/>
         </div>
 
         <h2>Signup</h2>

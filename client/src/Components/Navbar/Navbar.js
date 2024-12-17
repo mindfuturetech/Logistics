@@ -1,0 +1,60 @@
+import React from 'react';
+import {useNavigate, useLocation} from 'react-router-dom';
+import {FaHome, FaArrowLeft, FaBars, FaTimes} from 'react-icons/fa';
+import Logout from '../Logout/Logout';
+import './Navbar.css';
+import logo from '../../Images/logo.jpg';
+import Sidebar from '../Sidebar/Sidebar';
+import {useAuth} from '../../Auth/AuthContext'
+import '../../Pages/HomePage/HomePage.css';
+
+const Navbar = ({toggleSidebar, isCollapsed})=>{
+
+    const navigate =useNavigate();
+    const location = useLocation();
+
+
+    const getRouteName = () =>{
+        const path = location.pathname;
+        return path.substring(1).charAt(0).toUpperCase() + path.slice(2);
+    };
+
+    const handleBack = () =>{
+        navigate(-1);
+    };
+
+    const handleHome = () =>{
+        navigate('/home');
+    };
+
+    return(
+        <nav className='navbar'>
+            <div className="navbar-left">
+                <button className="nav-button sidebar-toggle" onClick={toggleSidebar}>
+                    { isCollapsed ? <FaBars className="button-icon" /> : <FaTimes className="button-icon" />}
+                </button>
+                <img src={logo} alt="Logo" className="logo" />
+                <button className="nav-button home-button" onClick={handleHome}>
+                    <FaHome className="button-icon" />
+                    <span>Home</span>
+                </button>
+            </div>
+
+            <div className='route-name'>
+                {getRouteName()}
+            </div>
+
+            <div className='nav-buttons-right'>
+                <button className='nav-button back-button' onClick={handleBack}>
+                    <FaArrowLeft className='button-icon' />
+                    <span>Back</span>
+                </button>
+                <Logout />
+            </div>
+        </nav>
+    );
+
+};
+
+
+export default Navbar;

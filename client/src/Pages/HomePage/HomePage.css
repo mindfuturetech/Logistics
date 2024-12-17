@@ -1,0 +1,75 @@
+
+.Home {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  width: 100%;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.sidebar {
+  position: fixed;
+  top: 9%;
+  left: 0;
+  height: 91%;
+  z-index: 1000;
+}
+
+.add-truck-details-container {
+  position: absolute;
+  top: 9%;
+  left: 14%; /* Align with sidebar width */
+  width: 86%; /* Take remaining width */
+  height: 91%; /* Take remaining height */
+  overflow-y: auto; /* Add scrolling if content overflows */
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.sidebar.collapsed + .add-truck-details-container {
+  left: 4%; /* Adjust when sidebar is collapsed */
+  width: 96%; /* Adjust width when sidebar is collapsed */
+}
+
+@media (max-width: 1024px) {
+  .add-truck-details-container {
+    left: 18%; /* Adjust for mid-sized screens */
+    width: 82%;
+  }
+
+  .sidebar.collapsed + .add-truck-details-container {
+    left: 7%; /* Adjust when sidebar is collapsed */
+    width: 93%;
+  }
+}
+
+@media (max-width: 768px) {
+  .add-truck-details-container {
+    left: 22%; /* Adjust for mobile screens */
+    width: 78%;
+  }
+
+  .sidebar.collapsed + .add-truck-details-container {
+    left: 8%; /* Adjust when sidebar is collapsed */
+    width: 92%;
+  }
+}
+
+@media (max-width: 480px) {
+  .add-truck-details-container {
+    left: 30%; /* Adjust for very small screens */
+    width: 70%;
+  }
+
+  .sidebar.collapsed + .add-truck-details-container {
+    left: 10%; /* Adjust when sidebar is collapsed */
+    width: 90%;
+  }
+}

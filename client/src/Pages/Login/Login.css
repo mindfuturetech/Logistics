@@ -35,7 +35,7 @@ body::before {
     margin-bottom: 20px;
 }
 
-.logo {
+.logo1 {
     max-width: 220px;
     height: auto;
 }
@@ -99,6 +99,9 @@ p {
     margin-top: 13px;
 }
 
+.Reset-text{
+    margin-top: 5px;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {

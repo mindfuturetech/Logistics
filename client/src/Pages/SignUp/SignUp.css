@@ -31,7 +31,7 @@ body::before {
   margin-bottom: 20px;
 }
 
-.logo {
+.logo1 {
   max-width: 220px;
   height: auto;
 }
@@ -118,7 +118,7 @@ p {
       max-width: 90%;
   }
 
-  .logo {
+  .logo1 {
       max-width: 160px;
       height: auto;
   }
