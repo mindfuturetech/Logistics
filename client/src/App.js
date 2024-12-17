@@ -10,6 +10,7 @@ import SignUp from './Pages/SignUp/SignUp';
 import Login from './Pages/Login/Login';
 import HomePage from './Pages/HomePage/HomePage';
 import Loading from './Components/Loading/Loading';
+import Reports from './Pages/Reports/Reports';
 
 
 function App() {
@@ -39,6 +40,10 @@ function App() {
           <Route 
             path='/home' 
             element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} 
+          />
+          <Route 
+            path='/reports' 
+            element={isAuthenticated ? <Reports /> : <Navigate to="/" />} 
           />
         </Routes>
       </div>

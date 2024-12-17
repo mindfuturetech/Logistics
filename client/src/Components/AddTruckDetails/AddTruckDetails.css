@@ -5,9 +5,19 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
     box-sizing: border-box;
-    
+    overflow: auto;
+    position: absolute;
+    top: 9%;
+    left: 5%; /* Align with sidebar width */
+    width: 95%; /* Take remaining width */
+    height: 91%; /* Take remaining height */
+    overflow-y: auto; /* Add scrolling if content overflows */
+    box-sizing: border-box;
 }
 
+.add-truck-details-container::-webkit-scrollbar {
+    display: none;
+  }
 
 .add-truck-details-title {
   font-size: 1.8rem;
@@ -104,3 +114,16 @@
   background-color: #005b8f;
 }
 
+@media (max-width: 1024px) {
+    .add-truck-details-container {
+      left: 8%; /* Adjust for mid-sized screens */
+      width: 92%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .add-truck-details-container {
+      left: 9%; /* Adjust for mobile screens */
+      width: 91%;
+    }
+  }  
