@@ -4,18 +4,12 @@
   top: 9%;
   left: 0;
   height: 91%;
-  width: 14%; /* Default width for larger screens */
+  width: 5%; /* Default width for larger screens */
   background:linear-gradient(to right, #1a1a1a, #333333);
   overflow: hidden;
   transition: width 0.3s ease;
   color: white;
   z-index: 1000;
-}
-
-/* Collapsed Sidebar */
-.sidebar.collapsed {
-  width: 4%; /* Slightly reduced collapsed width */
-  
 }
 
 /* Sidebar Menu Styling */
@@ -25,17 +19,22 @@
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  align-items: center;
 }
 
 /* Sidebar Item Styling */
 .sidebar-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.8rem;
-  font-size: 1rem;
+  font-size: 0.6rem;
   cursor: pointer;
   transition: background 0.3s ease;
   padding:0.2rem;
+}
+
+.sidebar-item span{
+text-align: center;
 }
 
 /* Sidebar Item Hover Effect */
@@ -46,114 +45,21 @@
 }
 /* Icon Styling */
 .icon {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
-
-/* Hover Effect Adjustment for Sidebar */
-
-
 
 
 /* Responsive Design for Smaller Screens */
 @media (max-width: 1024px) {
   .sidebar {
-    width: 18%; /* Slightly reduced width for mid-sized screens */
+    width: 8%; /* Slightly reduced width for mid-sized screens */
   }
-
-  .sidebar.collapsed {
-    width: 7%; /* Slightly reduced collapsed width */
-  }
-
-  /* Make the sidebar menu more compact */
-  .sidebar-menu {
-    padding: 0.8rem;
-    gap: 1rem;
-  }
-
-  /* Make sidebar items more compact */
-  .sidebar-item {
-    font-size: 0.9rem;
-    gap: 0.6rem;
-  }
-
-  .icon {
-    font-size: 1.2rem;
-  }
-
-  .sidebar-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.3rem 0.3rem;
-    border-radius: 6px;
-  }
-
-  /* Hover Effect Adjustment for Sidebar */
-
-
 
 }
 
 @media (max-width: 768px) {
-  /* On very small screens like tablets and mobile devices */
-  .sidebar {
-    width: 22%; /* Slightly reduced width for mobile screens */
+    .sidebar {
+      width: 9%; /* Reduced width for mobile screens */
+    }
   }
-
   
-  .sidebar.collapsed {
-    width: 8%; /* Reduced collapsed width */
-  }
-
-  .sidebar-item {
-    font-size: 1rem;
-    gap: 0.5rem;
-  }
-
-  .icon {
-    font-size: 1.3rem; /* Make icons smaller */
-  }
-  .sidebar-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.3rem 0.3rem;
-    border-radius: 6px;
-  }
-
-  /* Hover Effect Adjustment for Sidebar */
-
-
-}
-
-@media (max-width: 480px) {
-  /* For very small screens (mobile) */
-  .sidebar {
-    width: 30%; /* Slightly reduced width for mobile */
-  }
-
-  .sidebar.collapsed {
-    width: 10%; /* Reduced collapsed width */
-  }
-
-  /* Change the sidebar items to show only icons on small screens */
-  .sidebar-item {
-    font-size: 1.2rem;
-    gap: 0.3rem;
-  }
-
-  .icon {
-    font-size: 1.5rem; /* Make the icons large enough to be visible */
-  }
-
-  /* Sidebar Menu Adjustments for Mobile */
-  .sidebar-menu {
-    padding: 0.5rem;
-    gap: 0.8rem;
-  }
-
-  /* Hover Effect Adjustment for Sidebar */
-
-  .sidebar-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.3rem 0.3rem;
-    border-radius: 6px;
-  }
-
-}

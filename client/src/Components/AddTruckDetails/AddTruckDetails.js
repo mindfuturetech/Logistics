@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { FiUploadCloud } from 'react-icons/fi';
 import './AddTruckDetails.css';
 import '../../Pages/HomePage/HomePage.css'
 
-const AddTruckDetails = ({ isSidebarCollapsed }) => {
+const AddTruckDetails = () => {
   const [truckNumber, setTruckNumber] = useState('');
   const [doNumber, setDONumber] = useState('');
   const [time, setTime] = useState('');
@@ -13,7 +14,34 @@ const AddTruckDetails = ({ isSidebarCollapsed }) => {
   const [destinationTo, setDestinationTo] = useState('');
   const [truckType, setTruckType] = useState('');
   const [transactionStatus, setTransactionStatus] = useState('');
-  const [actualWeight, setActualWeight] = useState('');
+  const [Weight, setWeight] = useState('');
+  const [DifferenceInWeight, setDifferenceInWeight] = useState('');
+  const [Freight, setFreight] = useState('');
+  const [Diesel, setDiesel] = useState('');
+  const [DieselAmount, setDieselAmount] = useState('');
+  const [DieselSlipNumber, setDieselSlipNumber] = useState('');
+  const [Advance, setAdvance] = useState('');
+  const [truckImage, setTruckImage] = useState(null);
+  const [loadingAdvice, setLoadingAdvice] = useState(null);
+  const [invoiceCompany, setInvoiceCompany] = useState(null);
+  const [weighmentSlip, setWeighmentSlip] = useState(null);
+
+  const handleTruckImageUpload = (e) => {
+    setTruckImage(e.target.files[0]);
+  };
+
+  const handleLoadingAdviceUpload = (e) => {
+    setLoadingAdvice(e.target.files[0]);
+  };
+
+  const handleInvoiceCompanyUpload = (e) => {
+    setInvoiceCompany(e.target.files[0]);
+  };
+
+  const handleWeighmentSlipUpload = (e) => {
+    setWeighmentSlip(e.target.files[0]);
+  };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,17 +57,82 @@ const AddTruckDetails = ({ isSidebarCollapsed }) => {
       destinationTo,
       truckType,
       transactionStatus,
-      actualWeight,
-    });
+      Weight,
+      DifferenceInWeight,
+      Freight,
+      Diesel,
+      DieselAmount,
+      DieselSlipNumber,
+      Advance,
+      truckImage,
+      loadingAdvice,
+      invoiceCompany,
+      weighmentSlip
+    })
   };
+
+
+  
 
   return (
     <div
-      className={`add-truck-details-container ${
-        isSidebarCollapsed ? 'sidebar-collapsed' : ''
-      }`}
+      className={`add-truck-details-container`}
     >
-      <h2 className="add-truck-details-title">Add Truck Details</h2>
+
+      <h2 className="add-truck-details-title">Upload Truck Details</h2>
+
+      <div className="image-upload-section">
+        <div className="image-upload-item">
+          <label htmlFor="truckImage" className="image-upload-label">
+            <FiUploadCloud className="image-upload-icon" />
+            Upload Truck Image
+          </label>
+          <input
+            type="file"
+            id="truckImage"
+            onChange={handleTruckImageUpload}
+            className="image-upload-input"
+          />
+        </div>
+        <div className="image-upload-item">
+          <label htmlFor="loadingAdvice" className="image-upload-label">
+            <FiUploadCloud className="image-upload-icon" />
+            Loading Advice
+          </label>
+          <input
+            type="file"
+            id="loadingAdvice"
+            onChange={handleLoadingAdviceUpload}
+            className="image-upload-input"
+          />
+        </div>
+        <div className="image-upload-item">
+          <label htmlFor="invoiceCompany" className="image-upload-label">
+            <FiUploadCloud className="image-upload-icon" />
+            Invoice-Company
+          </label>
+          <input
+            type="file"
+            id="invoiceCompany"
+            onChange={handleInvoiceCompanyUpload}
+            className="image-upload-input"
+          />
+        </div>
+        <div className="image-upload-item">
+          <label htmlFor="weighmentSlip" className="image-upload-label">
+            <FiUploadCloud className="image-upload-icon" />
+            Weighment Slip
+          </label>
+          <input
+            type="file"
+            id="weighmentSlip"
+            onChange={handleWeighmentSlipUpload}
+            className="image-upload-input"
+          />
+        </div>
+      </div>
+
+
       <form onSubmit={handleSubmit} className="add-truck-details-form">
         <div className="form-group">
           <label htmlFor="truckNumber">Truck Number:</label>
@@ -60,22 +153,22 @@ const AddTruckDetails = ({ isSidebarCollapsed }) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="time">Time:</label>
-          <input
-            type="text"
-            id="time"
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-          />
+            <label htmlFor="time">Select a time:</label>
+            <input 
+                type="time" 
+                id="time" 
+                value={time}
+                onChange={(e) => setTime(e.target.value)} 
+            />
         </div>
         <div className="form-group">
-          <label htmlFor="date">Date:</label>
-          <input
-            type="text"
-            id="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
+            <label htmlFor="date">Select a date:</label>
+            <input 
+                type="date" 
+                id="date" 
+                value={date}
+                onChange={(e) => setDate(e.target.value)} 
+            />
         </div>
         <div className="form-group">
           <label htmlFor="driverName">Driver Name:</label>
@@ -147,16 +240,80 @@ const AddTruckDetails = ({ isSidebarCollapsed }) => {
           >
             <option value="">Select Transaction Status</option>
             <option value="open">Open</option>
-            <option value="closed">Closed</option>
+            <option value="Acknowledged">Acknowledged</option>
+            <option value="Acknowledged + Billed">Acknowledged + Billed</option>
           </select>
         </div>
         <div className="form-group">
-          <label htmlFor="actualWeight">Actual Weight (tons):</label>
+          <label htmlFor="Weight">Weight (tons):</label>
           <input
             type="text"
-            id="actualWeight"
-            value={actualWeight}
-            onChange={(e) => setActualWeight(e.target.value)}
+            id="Weight"
+            value={Weight}
+            onChange={(e) => setWeight(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Difference in Weight">Difference in Weight (tons):</label>
+          <input
+            type="text"
+            id="Difference in Weight"
+            value={DifferenceInWeight}
+            onChange={(e) => setDifferenceInWeight(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Difference in Weight">Difference in Weight (tons):</label>
+          <input
+            type="text"
+            id="Difference in Weight"
+            value={DifferenceInWeight}
+            onChange={(e) => setDifferenceInWeight(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Freight">Freight:</label>
+          <input
+            type="text"
+            id="Freight"
+            value={Freight}
+            onChange={(e) => setFreight(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Diesel">Diesel (Ltr):</label>
+          <input
+            type="text"
+            id="Diesel"
+            value={Diesel}
+            onChange={(e) => setDiesel(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Diesel Amount">Diesel Amount:</label>
+          <input
+            type="text"
+            id="Diesel Amount"
+            value={DieselAmount}
+            onChange={(e) => setDieselAmount(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="DieselSlipNumber">Diesel Slip Number:</label>
+          <input
+            type="text"
+            id="DieselSlipNumber"
+            value={DieselSlipNumber}
+            onChange={(e) => setDieselSlipNumber(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Advance">Advance:</label>
+          <input
+            type="text"
+            id="Advance"
+            value={Advance}
+            onChange={(e) => setAdvance(e.target.value)}
           />
         </div>
         <button type="submit" className="submit-button">

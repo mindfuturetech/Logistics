@@ -21,13 +21,12 @@ const HomePage = () => {
       };
       
   return (
-    <div className='Home'>
-    <Navbar toggleSidebar={toggleSidebar} isCollapsed={isSidebarCollapsed} />
-    <Sidebar isCollapsed={isSidebarCollapsed} />
-    <div className={`add-truck-details-wrapper ${isSidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
-        <AddTruckDetails isSidebarCollapsed={isSidebarCollapsed} />
+    <div className="Home">
+      <Navbar />
+      <Sidebar />
+      <AddTruckDetails />
+
     </div>
-</div>
   )
 }
 

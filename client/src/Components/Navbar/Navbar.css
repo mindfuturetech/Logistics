@@ -13,7 +13,7 @@
     right: 0;
     z-index: 1000;
     height: 9%;
-    padding-left: 0.1rem;
+    padding-left: 0.8rem;
    
   }
 
@@ -24,21 +24,13 @@
   gap: 12px;
 }
 
-.sidebar-toggle:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-1px);
-  
-}
-
 .logo {
     height: 32px;
     margin-right: 2px;
   }
   
   .nav-button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+
     padding: 8px 16px;
     border: none;
     border-radius: 6px;
@@ -63,14 +55,11 @@
     gap: 12px;
   }
 
-  .sidebar-toggle{
-    padding-left: 12px;
-  }
   
-  /* .back-button {
+  .back-button {
     background: rgba(255, 255, 255, 0.1);
   }
-   */
+  
   .back-button:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateX(-2px);
@@ -109,14 +98,10 @@
         padding-top: 0.8rem;
     padding-bottom: 0.8rem;
     padding-right: 0.5rem;
-    padding-left: 0.3rem;
-  
+    padding-left: 0.6rem;
 
     }
 
-    .sidebar-toggle:hover{
-        padding: 8px 8px;
-    }
 }
   
 

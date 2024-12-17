@@ -16,7 +16,40 @@ const Navbar = ({toggleSidebar, isCollapsed})=>{
 
     const getRouteName = () =>{
         const path = location.pathname;
-        return path.substring(1).charAt(0).toUpperCase() + path.slice(2);
+        
+        const Home = 'Home';
+        const FreightMaster = 'Freight Master';
+        const VehicleMaster = 'Vehicle Master';
+        const VendorMaster = 'Vendor Master';
+        const Reports = 'Reports';
+        const Billing = 'Billing';
+        const Transactions = 'Transactions'
+        const Expenses = 'Expenses';
+
+        if(path === '/home'){
+            return Home;
+        }
+        else if(path === '/'){
+            return FreightMaster;
+        }
+        else if(path === '/'){
+            return VehicleMaster;
+        }
+        else if(path === '/'){
+            return VendorMaster;
+        }
+        else if(path === '/'){
+            return Reports;
+        }
+        else if(path === '/'){
+            return Billing;
+        }
+        else if(path === '/'){
+            return Transactions;
+        }
+        else if(path === '/'){
+            return Expenses;
+        }
     };
 
     const handleBack = () =>{
@@ -30,9 +63,6 @@ const Navbar = ({toggleSidebar, isCollapsed})=>{
     return(
         <nav className='navbar'>
             <div className="navbar-left">
-                <button className="nav-button sidebar-toggle" onClick={toggleSidebar}>
-                    { isCollapsed ? <FaBars className="button-icon" /> : <FaTimes className="button-icon" />}
-                </button>
                 <img src={logo} alt="Logo" className="logo" />
                 <button className="nav-button home-button" onClick={handleHome}>
                     <FaHome className="button-icon" />
