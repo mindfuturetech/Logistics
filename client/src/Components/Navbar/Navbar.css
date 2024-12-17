@@ -57,10 +57,7 @@
   }
 
   
-  .back-button {
-    background: rgba(255, 255, 255, 0.1);
-  }
-  
+
   .back-button:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateX(-2px);
