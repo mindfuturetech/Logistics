@@ -1,4 +1,6 @@
 // client/src/App.js
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
@@ -12,6 +14,9 @@ import HomePage from './Pages/HomePage/HomePage';
 import Loading from './Components/Loading/Loading';
 
 
+import Freight from "./Components/Freight/Freight";
+import Vehicle from "./Components/Vehicle/Vehicle";
+import Vendor from "./Components/Vendor/Vendor";
 
 function App() {
 
@@ -43,6 +48,18 @@ function App() {
           />
           <Route 
             path='/reports' 
+            element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} 
+          />
+          <Route 
+            path='/freight' 
+            element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} 
+          />
+          <Route 
+            path='/vehicle' 
+            element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} 
+          />
+          <Route 
+            path='/vendor' 
             element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} 
           />
         
