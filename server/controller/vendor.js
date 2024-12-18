@@ -1,4 +1,4 @@
-const VendorModel = require('../model/vendor_model');
+const VendorModel = require('../models/vendor_model');
 VendorModel.createIndexes(); // Used indexing for uniqueness of data
 
 async function ListVendor(req, res) {

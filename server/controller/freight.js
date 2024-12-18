@@ -1,4 +1,4 @@
-const FreightModel = require('../model/freight_model');
+const FreightModel = require('../models/freight_model');
 FreightModel.createIndexes(); // Used indexing for uniqueness of data
 
 async function ListFreight(req, res) {

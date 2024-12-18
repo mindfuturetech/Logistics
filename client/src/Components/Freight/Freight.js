@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Freight.css";
 
-
 const getFreightDataUrl = "http://localhost:5000/logistics/list-freight";
 const insertFreightDataUrl = "http://localhost:5000/logistics/add-freight";
 const updateFreightDataUrl = "http://localhost:5000/logistics/update-freight";
@@ -114,7 +113,7 @@ const Freight = () => {
                     Back
                 </button>
             </div> */}
-            <h1>Rate Database</h1>
+            {/* <h1>Freight Master</h1> */}
             <div className="container-freight">
                 <form id="shipmentForm" onSubmit={handleFormSubmit}>
                     <label htmlFor="from_destination">From Destination:</label>

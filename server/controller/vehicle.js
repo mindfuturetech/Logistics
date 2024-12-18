@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const VehicleModel = require('../model/vehicle_model');
+const VehicleModel = require('../models/vehicle_model');
 
 async function ListVehicle(req, res) {
     try {

@@ -110,7 +110,7 @@ const Vehicle = () => {
 
     return (
         <div id="vehicle">
-            <h1>Vehicle Management</h1>
+            {/* <h1>Vehicle Master</h1> */}
             <form className="form-section" onSubmit={handleFormSubmit}>
                 <div className="form-left">
                     <label htmlFor="truckNo">Truck No:</label>

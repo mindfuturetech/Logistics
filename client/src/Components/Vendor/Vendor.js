@@ -75,7 +75,7 @@ const Vendor = () => {
 
     return (
         <div id="vendor">
-            <h1>TDS Database</h1>
+            {/* <h1>Vendor Master</h1> */}
             <div className="container-vendor">
                 <form className="vendorForm" onSubmit={handleFormSubmit}>
                     <label htmlFor="companyName">Vendor Name:</label>
