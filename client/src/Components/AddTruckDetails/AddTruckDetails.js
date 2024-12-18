@@ -4,16 +4,16 @@ import './AddTruckDetails.css';
 import '../../Pages/HomePage/HomePage.css'
 
 const AddTruckDetails = () => {
-  const [truckNumber, setTruckNumber] = useState('');
-  const [doNumber, setDONumber] = useState('');
-  const [time, setTime] = useState('');
-  const [date, setDate] = useState('');
-  const [driverName, setDriverName] = useState('');
-  const [vendor, setVendor] = useState('');
-  const [destinationFrom, setDestinationFrom] = useState('');
-  const [destinationTo, setDestinationTo] = useState('');
-  const [truckType, setTruckType] = useState('');
-  const [transactionStatus, setTransactionStatus] = useState('');
+  const [TruckNumber, setTruckNumber] = useState('');
+  const [DONumber, setDONumber] = useState('');
+  // const [Time, setTime] = useState('');
+  const [Date, setDate] = useState('');
+  const [DriverName, setDriverName] = useState('');
+  const [Vendor, setVendor] = useState('');
+  const [DestinationFrom, setDestinationFrom] = useState('');
+  const [DestinationTo, setDestinationTo] = useState('');
+  const [TruckType, setTruckType] = useState('');
+  const [TransactionStatus, setTransactionStatus] = useState('');
   const [Weight, setWeight] = useState('');
   const [DifferenceInWeight, setDifferenceInWeight] = useState('');
   const [Freight, setFreight] = useState('');
@@ -21,6 +21,9 @@ const AddTruckDetails = () => {
   const [DieselAmount, setDieselAmount] = useState('');
   const [DieselSlipNumber, setDieselSlipNumber] = useState('');
   const [Advance, setAdvance] = useState('');
+  const [Toll, setToll] =useState('');
+  const [Adblue, setAdblue] = useState('');
+  const [Greasing, setGreasing] = useState('');
   const [truckImage, setTruckImage] = useState(null);
   const [loadingAdvice, setLoadingAdvice] = useState(null);
   const [invoiceCompany, setInvoiceCompany] = useState(null);
@@ -47,27 +50,24 @@ const AddTruckDetails = () => {
     e.preventDefault();
     // Handle form submission logic here
     console.log({
-      truckNumber,
-      doNumber,
-      time,
-      date,
-      driverName,
-      vendor,
-      destinationFrom,
-      destinationTo,
-      truckType,
-      transactionStatus,
+      TruckNumber,
+      DONumber,
+      Date,
+      DriverName,
+      Vendor,
+      DestinationFrom,
+      DestinationTo,
+      TruckType,
+      TransactionStatus,
       Weight,
-      DifferenceInWeight,
       Freight,
       Diesel,
       DieselAmount,
       DieselSlipNumber,
       Advance,
-      truckImage,
-      loadingAdvice,
-      invoiceCompany,
-      weighmentSlip
+      Toll,
+      Adblue,
+      Greasing
     })
   };
 
@@ -78,7 +78,7 @@ const AddTruckDetails = () => {
     <div
       className={`add-truck-details-container`}
     >
-
+{/* 
       <h2 className="add-truck-details-title">Upload Truck Details</h2>
 
       <div className="image-upload-section">
@@ -131,7 +131,7 @@ const AddTruckDetails = () => {
           />
         </div>
       </div>
-
+ */}
 
       <form onSubmit={handleSubmit} className="add-truck-details-form">
         <div className="form-group">
@@ -139,20 +139,21 @@ const AddTruckDetails = () => {
           <input
             type="text"
             id="truckNumber"
-            value={truckNumber}
+            value={TruckNumber}
             onChange={(e) => setTruckNumber(e.target.value)}
           />
         </div>
         <div className="form-group">
           <label htmlFor="doNumber">DO Number:</label>
           <input
-            type="text"
+            type="number"
+            step="any"
             id="doNumber"
-            value={doNumber}
+            value={DONumber}
             onChange={(e) => setDONumber(e.target.value)}
           />
         </div>
-        <div className="form-group">
+        {/* <div className="form-group">
             <label htmlFor="time">Select a time:</label>
             <input 
                 type="time" 
@@ -160,13 +161,13 @@ const AddTruckDetails = () => {
                 value={time}
                 onChange={(e) => setTime(e.target.value)} 
             />
-        </div>
+        </div> */}
         <div className="form-group">
             <label htmlFor="date">Select a date:</label>
             <input 
                 type="date" 
                 id="date" 
-                value={date}
+                value={Date}
                 onChange={(e) => setDate(e.target.value)} 
             />
         </div>
@@ -175,7 +176,7 @@ const AddTruckDetails = () => {
           <input
             type="text"
             id="driverName"
-            value={driverName}
+            value={DriverName}
             onChange={(e) => setDriverName(e.target.value)}
           />
         </div>
@@ -183,7 +184,7 @@ const AddTruckDetails = () => {
           <label htmlFor="vendor">Vendor:</label>
           <select
             id="vendor"
-            value={vendor}
+            value={Vendor}
             onChange={(e) => setVendor(e.target.value)}
           >
             <option value="">Select Vendor</option>
@@ -196,7 +197,7 @@ const AddTruckDetails = () => {
           <label htmlFor="destinationFrom">Destination From:</label>
           <select
             id="destinationFrom"
-            value={destinationFrom}
+            value={DestinationFrom}
             onChange={(e) => setDestinationFrom(e.target.value)}
           >
             <option value="">Select Destination From</option>
@@ -209,7 +210,7 @@ const AddTruckDetails = () => {
           <label htmlFor="destinationTo">Destination To:</label>
           <select
             id="destinationTo"
-            value={destinationTo}
+            value={DestinationTo}
             onChange={(e) => setDestinationTo(e.target.value)}
           >
             <option value="">Select Destination To</option>
@@ -222,7 +223,7 @@ const AddTruckDetails = () => {
           <label htmlFor="truckType">Truck Type:</label>
           <select
             id="truckType"
-            value={truckType}
+            value={TruckType}
             onChange={(e) => setTruckType(e.target.value)}
           >
             <option value="">Select Truck Type</option>
@@ -235,13 +236,11 @@ const AddTruckDetails = () => {
           <label htmlFor="transactionStatus">Transaction Status:</label>
           <select
             id="transactionStatus"
-            value={transactionStatus}
+            value={TransactionStatus}
             onChange={(e) => setTransactionStatus(e.target.value)}
           >
             <option value="">Select Transaction Status</option>
             <option value="open">Open</option>
-            <option value="Acknowledged">Acknowledged</option>
-            <option value="Acknowledged + Billed">Acknowledged + Billed</option>
           </select>
         </div>
         <div className="form-group">
@@ -251,24 +250,6 @@ const AddTruckDetails = () => {
             id="Weight"
             value={Weight}
             onChange={(e) => setWeight(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="Difference in Weight">Difference in Weight (tons):</label>
-          <input
-            type="text"
-            id="Difference in Weight"
-            value={DifferenceInWeight}
-            onChange={(e) => setDifferenceInWeight(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="Difference in Weight">Difference in Weight (tons):</label>
-          <input
-            type="text"
-            id="Difference in Weight"
-            value={DifferenceInWeight}
-            onChange={(e) => setDifferenceInWeight(e.target.value)}
           />
         </div>
         <div className="form-group">
@@ -314,6 +295,36 @@ const AddTruckDetails = () => {
             id="Advance"
             value={Advance}
             onChange={(e) => setAdvance(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Toll">Toll:</label>
+          <input
+            type="number"
+            step="any"
+            id="Toll"
+            value={Toll}
+            onChange={(e) => setToll(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Adblue">Adblue:</label>
+          <input
+            type="number"
+            step="any"
+            id="Adblue"
+            value={Adblue}
+            onChange={(e) => setAdblue(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Greasing">Greasing:</label>
+          <input
+            type="number"
+            step="any"
+            id="Greasing"
+            value={Greasing}
+            onChange={(e) => setGreasing(e.target.value)}
           />
         </div>
         <button type="submit" className="submit-button">

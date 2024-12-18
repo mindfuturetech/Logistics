@@ -1,13 +1,39 @@
 import React from 'react';
-import { FaTruck, FaCar, FaUserTie, FaChartBar, FaMoneyBill, FaClipboard, FaMoneyCheckAlt } from 'react-icons/fa';
+import { 
+  FaTruck, 
+  FaCar, 
+  FaUserTie, 
+  FaChartBar, 
+  FaMoneyBill, 
+  FaClipboard, 
+  FaMoneyCheckAlt, 
+  FaCloudUploadAlt 
+} from 'react-icons/fa';
 import './Sidebar.css';
+import '../../Pages/HomePage/HomePage.css';
+import { useNavigate } from 'react-router-dom';
 
-import '../../Pages/HomePage/HomePage.css'
+
+
 
 const Sidebar = () => {
+    const navigate = useNavigate();
+    
+    const handleHome = () =>{
+        navigate('/home');
+    };
+    
+    const handleReports = () =>{
+        navigate('/reports');
+    };
+
   return (
     <aside className={`sidebar`}>
       <ul className="sidebar-menu">
+        <li className="sidebar-item" onClick={handleHome}>
+          <FaCloudUploadAlt className="icon" />
+          <span>Upload Truck Details</span>
+        </li>
         <li className="sidebar-item">
           <FaTruck className="icon" />
           <span>Freight Master</span>
@@ -20,7 +46,7 @@ const Sidebar = () => {
           <FaUserTie className="icon" />
           <span>Vendor Master</span>
         </li>
-        <li className="sidebar-item">
+        <li className="sidebar-item" onClick={handleReports}>
           <FaChartBar className="icon" />
           <span>Reports</span>
         </li>

@@ -17,7 +17,7 @@ const Navbar = ({toggleSidebar, isCollapsed})=>{
     const getRouteName = () =>{
         const path = location.pathname;
         
-        const Home = 'Home';
+        const Home = 'Upload Truck Details';
         const FreightMaster = 'Freight Master';
         const VehicleMaster = 'Vehicle Master';
         const VendorMaster = 'Vendor Master';
@@ -38,7 +38,7 @@ const Navbar = ({toggleSidebar, isCollapsed})=>{
         else if(path === '/'){
             return VendorMaster;
         }
-        else if(path === '/'){
+        else if(path === '/reports'){
             return Reports;
         }
         else if(path === '/'){
@@ -56,18 +56,18 @@ const Navbar = ({toggleSidebar, isCollapsed})=>{
         navigate(-1);
     };
 
-    const handleHome = () =>{
-        navigate('/home');
-    };
+    // const handleHome = () =>{
+    //     navigate('/home');
+    // };
 
     return(
         <nav className='navbar'>
             <div className="navbar-left">
                 <img src={logo} alt="Logo" className="logo" />
-                <button className="nav-button home-button" onClick={handleHome}>
+                {/* <button className="nav-button home-button" onClick={handleHome}>
                     <FaHome className="button-icon" />
                     <span>Home</span>
-                </button>
+                </button> */}
             </div>
 
             <div className='route-name'>
