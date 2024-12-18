@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -7,13 +9,9 @@ const mongoose = require('mongoose');
 const route = require('./router');
 const multer = require('./multer/multer')
 
-require('dotenv').config();
-
 
 const app = express();
 const connectDB = require('./config/db');
-
-const route = require('./router');
 
 // Middleware
 app.use(cors({
@@ -26,11 +24,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.get("/",(req, res) => {
-  res.send("<h2>Logistics app by MFT.<h2>")
-})
-
-app.use("/logistics",route);
 
 connectDB();
 

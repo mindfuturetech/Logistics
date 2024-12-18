@@ -27,6 +27,18 @@ const Sidebar = () => {
         navigate('/reports');
     };
 
+    const handleFreight = () =>{
+        navigate('/freight');
+    };
+
+    const handleVehicle = () =>{
+        navigate('/vehicle');
+    };
+
+    const handleVendor = () =>{
+        navigate('/vendor');
+    };
+
   return (
     <aside className={`sidebar`}>
       <ul className="sidebar-menu">
@@ -34,15 +46,15 @@ const Sidebar = () => {
           <FaCloudUploadAlt className="icon" />
           <span>Upload Truck Details</span>
         </li>
-        <li className="sidebar-item">
+        <li className="sidebar-item" onClick={handleFreight}>
           <FaTruck className="icon" />
           <span>Freight Master</span>
         </li>
-        <li className="sidebar-item">
+        <li className="sidebar-item"  onClick={handleVehicle}>
           <FaCar className="icon" />
           <span>Vehicle Master</span>
         </li>
-        <li className="sidebar-item">
+        <li className="sidebar-item" onClick={handleVendor}>
           <FaUserTie className="icon" />
           <span>Vendor Master</span>
         </li>

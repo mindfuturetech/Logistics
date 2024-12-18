@@ -25,7 +25,7 @@
   margin-bottom: 1.5rem;
 }
 
-
+/* 
 .image-upload-section {
     display: flex;
     justify-content: center;
@@ -63,7 +63,7 @@
   
 .image-upload-input {
     display: none;
-}
+} */
 
 .add-truck-details-form {
   display: grid;

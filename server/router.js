@@ -7,20 +7,9 @@ const login= require('./controller/login');
 const resetPassword =  require('./controller/resetPassword');
 const auth = require('./Authentication/Auth');
 const logout = require('./controller/logout');
-//Routes
-router.get('/check-auth',auth);
-router.post('/signup',signup);
-router.post('/login',login);
-router.post('/logout', logout);  // Add this line
-router.post('/reset-password',resetPassword);
-
-module.exports = router;
-const { Router } = require('express');
-
 const freightController = require('./controller/freight');
 const vehicleController = require('./controller/vehicle');
 const vendorController = require('./controller/vendor');
-
 
 const multer = require("multer");
 const fs = require("fs");
@@ -43,6 +32,13 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage: storage,
 });
+
+//Routes
+router.get('/check-auth',auth);
+router.post('/signup',signup);
+router.post('/login',login);
+router.post('/logout', logout);  // Add this line
+router.post('/reset-password',resetPassword);
 
 // freight
 router.get("/list-freight", freightController.ListFreight);

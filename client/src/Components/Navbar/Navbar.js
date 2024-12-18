@@ -29,13 +29,13 @@ const Navbar = ({toggleSidebar, isCollapsed})=>{
         if(path === '/home'){
             return Home;
         }
-        else if(path === '/'){
+        else if(path === '/freight'){
             return FreightMaster;
         }
-        else if(path === '/'){
+        else if(path === '/vehicle'){
             return VehicleMaster;
         }
-        else if(path === '/'){
+        else if(path === '/vendor'){
             return VendorMaster;
         }
         else if(path === '/reports'){

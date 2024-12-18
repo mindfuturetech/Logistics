@@ -1,9 +1,9 @@
 // client/src/App.js
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import './App.css';
 import axios from 'axios';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 
@@ -12,8 +12,6 @@ import SignUp from './Pages/SignUp/SignUp';
 import Login from './Pages/Login/Login';
 import HomePage from './Pages/HomePage/HomePage';
 import Loading from './Components/Loading/Loading';
-
-
 import Freight from "./Components/Freight/Freight";
 import Vehicle from "./Components/Vehicle/Vehicle";
 import Vendor from "./Components/Vendor/Vendor";

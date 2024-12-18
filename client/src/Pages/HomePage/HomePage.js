@@ -2,14 +2,15 @@ import React, {useState,useEffect} from 'react';
 import './HomePage.css';
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Cookies from 'js-cookie';
 
-import { useAuth } from '../../Auth/AuthContext';
 import Navbar from '../../Components/Navbar/Navbar';
-import Logout from '../../Components/Logout/Logout';
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import AddTruckDetails from '../../Components/AddTruckDetails/AddTruckDetails';
 import Reports from '../../Components/Reports/Reports';
+import Freight from '../../Components/Freight/Freight';
+import Vehicle from '../../Components/Vehicle/Vehicle';
+import Vendor from '../../Components/Vendor/Vendor';
+
 
 axios.defaults.baseURL = 'http://localhost:5000/logistics';
 
@@ -27,6 +28,15 @@ const HomePage = () => {
             break;
           case '/reports':
             setCurrentComponent(<Reports />);
+            break;
+          case '/freight':
+            setCurrentComponent(<Freight />);
+            break;
+          case '/vehicle':
+            setCurrentComponent(<Vehicle />);
+            break;
+          case '/vendor':
+            setCurrentComponent(<Vendor />);
             break;
           default:
             setCurrentComponent(null); // Handle any other routes if necessary
