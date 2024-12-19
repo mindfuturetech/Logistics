@@ -39,6 +39,10 @@ const Sidebar = () => {
         navigate('/vendor');
     };
 
+    const handleTransactions = () =>{
+      navigate('/transactions');
+    }
+
   return (
     <aside className={`sidebar`}>
       <ul className="sidebar-menu">
@@ -66,7 +70,7 @@ const Sidebar = () => {
           <FaMoneyBill className="icon" />
           <span>Billing</span>
         </li>
-        <li className="sidebar-item">
+        <li className="sidebar-item" onClick={handleTransactions}>
           <FaMoneyCheckAlt className="icon" />
           <span>Transactions</span>
         </li>

@@ -1,0 +1,163 @@
+#transactions {
+    font-family: Arial, sans-serif;
+    /* margin: 20px; */
+    background-color: #f4f4f4;
+    padding: 2rem;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    box-sizing: border-box;
+    overflow: auto;
+    position: absolute;
+    top: 9%;
+    left: 5%;
+    /* Align with sidebar width */
+    width: 95%;
+    /* Take remaining width */
+    height: 91%;
+    /* Take remaining height */
+    overflow-y: auto;
+    /* Add scrolling if content overflows */
+    box-sizing: border-box;
+    /* max-width: 95%; */
+}
+
+#transactions .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 80%;
+    padding: 10px;
+    /* background-color: #ffffff; */
+    /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); */
+    border-radius: 20px;
+    /* margin: 10px; */
+    justify-content: space-between;
+    align-items: self-start;
+}
+
+#transactions .form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    width: auto;
+    align-self: self-start;
+}
+
+#transactions .form-group input[type="date"] {
+    padding: 5px;
+    width: 30%;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    align-items: start;
+}
+
+#transactions input[type="date"]:focus {
+    border: 2px solid green;
+    outline: none;
+}
+
+#transactions .search-button {
+    padding: 10px 20px;
+    width: 10%;
+    border: none;
+    border-radius: 4px;
+    background-color: #008CBA;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#transactions .search-button:hover {
+    background-color: green;
+}
+
+#transactions #monthsContainer {
+    display: none
+}
+
+/* #transactions table {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#transactions th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+#transactions th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#transactions tr:nth-child(even) {
+    background-color: #f2f2f2;
+} */
+
+#transactions tr:hover {
+    background-color: #ddd;
+}
+
+#transactions h1 {
+    text-align: center;
+    color: #333;
+}
+
+#transactions .month-header {
+    color: black;
+    /* Change text color to black */
+    font-size: 20px;
+    padding: 10px;
+}
+
+#transactions .date-header {
+    color: #333;
+    font-size: 18px;
+    padding: 10px;
+}
+
+#transactions .tableWrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 70%;
+    padding-left: 20px;
+}
+
+#transactions #resultsTable {
+    /* display: none; */
+    border-collapse: collapse;
+    text-align: start;
+    /* max-width: 70%; */
+    width: 100%;
+    padding: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    margin: 10px;
+}
+
+#transactions #resultsTable th,
+#transactions #resultsTable td {
+    border: 1px solid #ddd;
+    /* padding: 5px; */
+}
+
+#transactions #resultsTable th {
+    background-color: #ddd;
+    color: black;
+    font-size: 14px;
+    border: 2px solid #333;
+    /* text-transform: uppercase; */
+}
+
+#transactions #resultsTable td {
+    font-size: 14px;
+}
