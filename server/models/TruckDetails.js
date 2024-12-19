@@ -44,15 +44,17 @@ const truckDetailsSchema = new mongoose.Schema({
         type:Number,
         required:true
     },
+    Freight:{
+        type:Number,
+        required:true
+    },
     ActualWeight:{
         type:Number,
-        required:true,
-        default:null
+        default:0
     },
     DifferenceInWeight:{
         type:Number,
-        required:true,
-        default:null
+        default:0
     },
     Freight:{
         type:Number,
@@ -87,16 +89,16 @@ const truckDetailsSchema = new mongoose.Schema({
         required:true
     },
     DieselSlipImage:{
-        filepath:{type:String}
+        filepath:{type:String,default:null}
     },
     LoadingAdvice:{
-        filepath:{type:String}
+        filepath:{type:String,default:null}
     },
     InvoiceCompany:{
-        filepath:{type:String}
+        filepath:{type:String,default:null}
     },
     WeightmentSlip:{
-        filepath:{type:String}
+        filepath:{type:String,default:null}
     },
 
 

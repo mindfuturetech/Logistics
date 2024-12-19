@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { FiUploadCloud } from 'react-icons/fi';
 import './AddTruckDetails.css';
 import '../../Pages/HomePage/HomePage.css'
+import axios from 'axios';
+axios.defaults.baseURL = 'http://localhost:5000/logistics';
+
 
 const AddTruckDetails = () => {
   const [TruckNumber, setTruckNumber] = useState('');
@@ -21,7 +24,7 @@ const AddTruckDetails = () => {
   const [DieselAmount, setDieselAmount] = useState('');
   const [DieselSlipNumber, setDieselSlipNumber] = useState('');
   const [Advance, setAdvance] = useState('');
-  const [Toll, setToll] =useState('');
+  const [Toll, setToll] = useState('');
   const [Adblue, setAdblue] = useState('');
   const [Greasing, setGreasing] = useState('');
   const [truckImage, setTruckImage] = useState(null);
@@ -29,56 +32,53 @@ const AddTruckDetails = () => {
   const [invoiceCompany, setInvoiceCompany] = useState(null);
   const [weighmentSlip, setWeighmentSlip] = useState(null);
 
-  const handleTruckImageUpload = (e) => {
-    setTruckImage(e.target.files[0]);
-  };
+  // const handleTruckImageUpload = (e) => {
+  //   setTruckImage(e.target.files[0]);
+  // };
 
-  const handleLoadingAdviceUpload = (e) => {
-    setLoadingAdvice(e.target.files[0]);
-  };
+  // const handleLoadingAdviceUpload = (e) => {
+  //   setLoadingAdvice(e.target.files[0]);
+  // };
 
-  const handleInvoiceCompanyUpload = (e) => {
-    setInvoiceCompany(e.target.files[0]);
-  };
+  // const handleInvoiceCompanyUpload = (e) => {
+  //   setInvoiceCompany(e.target.files[0]);
+  // };
 
-  const handleWeighmentSlipUpload = (e) => {
-    setWeighmentSlip(e.target.files[0]);
-  };
-  
+  // const handleWeighmentSlipUpload = (e) => {
+  //   setWeighmentSlip(e.target.files[0]);
+  // };
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle form submission logic here
-    console.log({
-      TruckNumber,
-      DONumber,
-      Date,
-      DriverName,
-      Vendor,
-      DestinationFrom,
-      DestinationTo,
-      TruckType,
-      TransactionStatus,
-      Weight,
-      Freight,
-      Diesel,
-      DieselAmount,
-      DieselSlipNumber,
-      Advance,
-      Toll,
-      Adblue,
-      Greasing
-    })
+
+    let sendData = {
+      TruckNumber, DONumber, Date, DriverName, Vendor, DestinationFrom, DestinationTo,
+      TruckType, TransactionStatus, Weight, Freight, Diesel, DieselAmount, DieselSlipNumber, Advance, Toll, Adblue, Greasing
+    }
+    try {
+      const response = await axios.post('/reports', sendData, {
+        withCredentials: true
+      });
+
+      alert(response.data.message);
+    } catch (error) {
+      alert(error.response.data.message);
+    }
+
+
+
   };
 
 
-  
+
 
   return (
     <div
       className={`add-truck-details-container`}
     >
-{/* 
+      {/* 
       <h2 className="add-truck-details-title">Upload Truck Details</h2>
 
       <div className="image-upload-section">
@@ -163,13 +163,13 @@ const AddTruckDetails = () => {
             />
         </div> */}
         <div className="form-group">
-            <label htmlFor="date">Select a date:</label>
-            <input 
-                type="date" 
-                id="date" 
-                value={Date}
-                onChange={(e) => setDate(e.target.value)} 
-            />
+          <label htmlFor="date">Select a date:</label>
+          <input
+            type="date"
+            id="date"
+            value={Date}
+            onChange={(e) => setDate(e.target.value)}
+          />
         </div>
         <div className="form-group">
           <label htmlFor="driverName">Driver Name:</label>
@@ -181,9 +181,9 @@ const AddTruckDetails = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="vendor">Vendor:</label>
+          <label htmlFor="vendors">Vendor:</label>
           <select
-            id="vendor"
+            id="vendors"
             value={Vendor}
             onChange={(e) => setVendor(e.target.value)}
           >
@@ -246,7 +246,8 @@ const AddTruckDetails = () => {
         <div className="form-group">
           <label htmlFor="Weight">Weight (tons):</label>
           <input
-            type="text"
+            type="number"
+            step="any"
             id="Weight"
             value={Weight}
             onChange={(e) => setWeight(e.target.value)}
@@ -255,7 +256,8 @@ const AddTruckDetails = () => {
         <div className="form-group">
           <label htmlFor="Freight">Freight:</label>
           <input
-            type="text"
+            type="number"
+            step="any"
             id="Freight"
             value={Freight}
             onChange={(e) => setFreight(e.target.value)}
@@ -273,7 +275,8 @@ const AddTruckDetails = () => {
         <div className="form-group">
           <label htmlFor="Diesel Amount">Diesel Amount:</label>
           <input
-            type="text"
+            type="number"
+            step="any"
             id="Diesel Amount"
             value={DieselAmount}
             onChange={(e) => setDieselAmount(e.target.value)}
@@ -282,7 +285,8 @@ const AddTruckDetails = () => {
         <div className="form-group">
           <label htmlFor="DieselSlipNumber">Diesel Slip Number:</label>
           <input
-            type="text"
+            type="number"
+            step="any"
             id="DieselSlipNumber"
             value={DieselSlipNumber}
             onChange={(e) => setDieselSlipNumber(e.target.value)}
