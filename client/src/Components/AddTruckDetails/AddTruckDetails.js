@@ -15,7 +15,7 @@ const AddTruckDetails = () => {
   const [TruckType, setTruckType] = useState('');
   const [TransactionStatus, setTransactionStatus] = useState('');
   const [Weight, setWeight] = useState('');
-  // const [DifferenceInWeight, setDifferenceInWeight] = useState('');
+  const [DifferenceInWeight, setDifferenceInWeight] = useState('');
   const [Freight, setFreight] = useState('');
   const [Diesel, setDiesel] = useState('');
   const [DieselAmount, setDieselAmount] = useState('');
@@ -52,7 +52,6 @@ const AddTruckDetails = () => {
     console.log({
       TruckNumber,
       DONumber,
-    
       Date,
       DriverName,
       Vendor,
@@ -188,7 +187,7 @@ const AddTruckDetails = () => {
             value={Vendor}
             onChange={(e) => setVendor(e.target.value)}
           >
-            <option value="">Select Vendor </option>
+            <option value="">Select Vendor</option>
             <option value="vendor1">Vendor 1</option>
             <option value="vendor2">Vendor 2</option>
             <option value="vendor3">Vendor 3</option>
@@ -247,8 +246,7 @@ const AddTruckDetails = () => {
         <div className="form-group">
           <label htmlFor="Weight">Weight (tons):</label>
           <input
-            type="number"
-            step="any"
+            type="text"
             id="Weight"
             value={Weight}
             onChange={(e) => setWeight(e.target.value)}
@@ -257,8 +255,7 @@ const AddTruckDetails = () => {
         <div className="form-group">
           <label htmlFor="Freight">Freight:</label>
           <input
-            type="number"
-            step="any"
+            type="text"
             id="Freight"
             value={Freight}
             onChange={(e) => setFreight(e.target.value)}
@@ -267,8 +264,7 @@ const AddTruckDetails = () => {
         <div className="form-group">
           <label htmlFor="Diesel">Diesel (Ltr):</label>
           <input
-            type="Number"
-            step="any"
+            type="text"
             id="Diesel"
             value={Diesel}
             onChange={(e) => setDiesel(e.target.value)}
@@ -277,8 +273,7 @@ const AddTruckDetails = () => {
         <div className="form-group">
           <label htmlFor="Diesel Amount">Diesel Amount:</label>
           <input
-            type="number"
-            step="any"
+            type="text"
             id="Diesel Amount"
             value={DieselAmount}
             onChange={(e) => setDieselAmount(e.target.value)}
@@ -287,8 +282,7 @@ const AddTruckDetails = () => {
         <div className="form-group">
           <label htmlFor="DieselSlipNumber">Diesel Slip Number:</label>
           <input
-            type="number"
-            step="any"
+            type="text"
             id="DieselSlipNumber"
             value={DieselSlipNumber}
             onChange={(e) => setDieselSlipNumber(e.target.value)}
@@ -297,8 +291,7 @@ const AddTruckDetails = () => {
         <div className="form-group">
           <label htmlFor="Advance">Advance:</label>
           <input
-            type="number"
-            step="any"
+            type="text"
             id="Advance"
             value={Advance}
             onChange={(e) => setAdvance(e.target.value)}
