@@ -6,9 +6,9 @@
     align-items: center;
     flex-direction: column;
     width: 90%; */
-    padding: 2rem;
+    /* padding: 2rem; */
     background-color: #f5f5f5;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
     box-sizing: border-box;
@@ -34,9 +34,9 @@ h1 {
 .container-vendor {
     width: auto;
     /* padding: 20px; */
-    background-color: #ffffff;
+    background-color:  #f5f5f5;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
+    /* border-radius: 12px; */
     /* margin-top: 20px; */
     overflow: hidden;
 }
