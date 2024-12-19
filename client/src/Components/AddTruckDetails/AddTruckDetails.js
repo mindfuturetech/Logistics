@@ -181,9 +181,9 @@ const AddTruckDetails = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="vendor">Vendor:</label>
+          <label htmlFor="vendors">Vendor:</label>
           <select
-            id="vendor"
+            id="vendors"
             value={Vendor}
             onChange={(e) => setVendor(e.target.value)}
           >

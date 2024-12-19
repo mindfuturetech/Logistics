@@ -50,17 +50,16 @@ function App() {
           />
           <Route 
             path='/freight' 
-            element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} 
+            element={isAuthenticated ? <Freight /> : <Navigate to="/" />} 
           />
           <Route 
             path='/vehicle' 
-            element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} 
+            element={isAuthenticated ? <Vehicle /> : <Navigate to="/" />} 
           />
           <Route 
             path='/vendor' 
-            element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} 
+            element={isAuthenticated ? <Vendor /> : <Navigate to="/" />} 
           />
-        
         </Routes>
       </div>
     </Router>
