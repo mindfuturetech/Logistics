@@ -15,10 +15,13 @@ async function ListAllTransactions(req, res) {
 
         let fetchedList = [];
         if (!start && !end) {
-            fetchedList = await TruckDetailsModel.find({});
+            fetchedList = await TruckDetailsModel.find({
+                TransactionStatus: "Acknowledged"
+            });
         } else {
             fetchedList = await TruckDetailsModel.find({
                 Date: { $gte: start, $lte: end },
+                TransactionStatus: "Acknowledged",
             });
         }
         console.log("fetchedList::>>>", fetchedList);
