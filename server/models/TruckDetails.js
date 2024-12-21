@@ -78,6 +78,16 @@ const truckDetailsSchema = new mongoose.Schema({
         type:Number,
         required:true 
     },
+    TDS:{
+        type: Number,
+        required: true,
+        validate: {
+            validator: function (v) {
+                return v >= 0;
+            },
+            message: "Value must be a positive number",
+        },
+    },
     Adblue:{
         type:Number,
         required:true

@@ -6,9 +6,9 @@
     align-items: center;
     flex-direction: column;
     width: 90%; */
-    padding: 2rem;
+    /* padding: 2rem; */
     background-color: #f5f5f5;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
     box-sizing: border-box;
@@ -35,8 +35,8 @@ h1 {
     width: auto;
     /* padding: 20px; */
     background-color: #ffffff;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
+    /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; */
     /* margin-top: 20px; */
     overflow: hidden;
 }
@@ -145,6 +145,39 @@ h1 {
     overflow-x: auto;
 }
 
+.container-vendor .tableWrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.container-vendor #resultsTable {
+    border-collapse: collapse;
+    text-align: center;
+    width: 98%;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.container-vendor #resultsTable th,
+.container-vendor #resultsTable td {
+    border: 1px solid black;
+    padding: 2px;
+}
+
+.container-vendor #resultsTable th {
+    background-color: #ddd;
+    color: black;
+    font-size: 15px;
+}
+
+.container-vendor #resultsTable td {
+    font-size: 14px;
+}
+
+
 /* Table Styling */
 /* table {
     width: auto;
@@ -176,7 +209,7 @@ tr:hover {
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .container-vendor {
-        max-width: 90%;
+        max-width: 1000%;
         padding: 15px;
     }
 

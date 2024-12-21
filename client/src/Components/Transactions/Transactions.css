@@ -1,38 +1,23 @@
 #transactions {
     font-family: Arial, sans-serif;
-    /* margin: 20px; */
-    background-color: #f4f4f4;
-    padding: 2rem;
     background-color: #f5f5f5;
-    border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    box-sizing: border-box;
-    overflow: auto;
     position: absolute;
     top: 9%;
     left: 5%;
-    /* Align with sidebar width */
     width: 95%;
-    /* Take remaining width */
     height: 91%;
-    /* Take remaining height */
     overflow-y: auto;
-    /* Add scrolling if content overflows */
     box-sizing: border-box;
-    /* max-width: 95%; */
 }
 
+/* Form Styles */
 #transactions .form-group {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     width: 80%;
-    padding: 10px;
-    /* background-color: #ffffff; */
-    /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); */
-    border-radius: 20px;
-    /* margin: 10px; */
+    margin-left: 10px;
     justify-content: space-between;
     align-items: self-start;
 }
@@ -52,7 +37,6 @@
     border: 1px solid #ccc;
     box-sizing: border-box;
     transition: border-color 0.3s ease;
-    align-items: start;
 }
 
 #transactions input[type="date"]:focus {
@@ -60,6 +44,7 @@
     outline: none;
 }
 
+/* Button Styles */
 #transactions .search-button {
     padding: 10px 20px;
     width: 10%;
@@ -76,36 +61,7 @@
     background-color: green;
 }
 
-#transactions #monthsContainer {
-    display: none
-}
-
-/* #transactions table {
-    width: 70%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-#transactions th, td {
-    padding: 12px;
-    text-align: left;
-    border: 1px solid #ddd;
-}
-
-#transactions th {
-    background-color: #4CAF50;
-    color: white;
-}
-
-#transactions tr:nth-child(even) {
-    background-color: #f2f2f2;
-} */
-
-#transactions tr:hover {
-    background-color: #ddd;
-}
-
+/* Header Styles */
 #transactions h1 {
     text-align: center;
     color: #333;
@@ -113,51 +69,108 @@
 
 #transactions .month-header {
     color: black;
-    /* Change text color to black */
     font-size: 20px;
     padding: 10px;
+    font-weight: bold;
 }
 
 #transactions .date-header {
     color: #333;
     font-size: 18px;
     padding: 10px;
+    margin-top: 10px;
 }
 
+/* Table Styles */
 #transactions .tableWrapper {
+    display: none;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    width: 70%;
-    padding-left: 20px;
 }
 
-#transactions #resultsTable {
-    /* display: none; */
+.table-wrapper #resultsTable {
     border-collapse: collapse;
-    text-align: start;
-    /* max-width: 70%; */
-    width: 100%;
+    text-align: center;
+    width: 98%;
     padding: 10px;
     background-color: #ffffff;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    margin: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-left: 10px;
 }
 
 #transactions #resultsTable th,
 #transactions #resultsTable td {
-    border: 1px solid #ddd;
-    /* padding: 5px; */
+    border: 1px solid black;
+    padding: 2px;
 }
 
 #transactions #resultsTable th {
     background-color: #ddd;
     color: black;
-    font-size: 14px;
-    border: 2px solid #333;
-    /* text-transform: uppercase; */
+    font-size: 15px;
 }
 
 #transactions #resultsTable td {
     font-size: 14px;
+}
+
+.no-data-message {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #666;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+
+.initial-message {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #666;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.error-message {
+    text-align: center;
+    padding: 10px;
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #transactions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    label {
+        text-align: left;
+        min-width: 100%;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        max-width: 100%;
+    }
+
+    .submit-button {
+        width: 100%;
+    }
+
+    #resultsTable th,
+    #resultsTable td {
+        font-size: 14px;
+        padding: 2px;
+    }
 }

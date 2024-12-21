@@ -146,7 +146,7 @@ const Freight = () => {
                     <button className="submit-button" type="submit">Submit</button>
                     <p>{submitMessage}</p>
                 </form>
-                <div className="tableWrapper" id="results">
+                <div className="table-wrapper" id="results">
                     <h2>Your Current Rates</h2>
                     <table id="resultsTable">
                         <thead>
