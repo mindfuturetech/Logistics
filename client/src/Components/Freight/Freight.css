@@ -1,0 +1,204 @@
+#freight {
+    /* font-family: Arial, sans-serif;
+    margin: 10px 20px;
+    display: flex;
+    justify-self: center;
+    align-items: start;
+    flex-direction: column;
+    width: 100%; */
+    /* padding: 2rem; */
+    background-color: #ffffff;
+    /* border-radius: 8px; */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    box-sizing: border-box;
+    overflow: auto;
+    position: absolute;
+    top: 9%;
+    left: 5%; /* Align with sidebar width */
+    width: 95%; /* Take remaining width */
+    height: 91%; /* Take remaining height */
+    overflow-y: auto; /* Add scrolling if content overflows */
+    box-sizing: border-box;
+    /* max-width: 95%; */
+}
+
+#freight .container-freight {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    /* padding: 10px; */
+    background-color: #ffffff;
+    /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); */
+    border-radius: 20px;
+    /* margin: 10px; */
+    align-items: self-start;
+}
+
+#freight h1 {
+    text-align: center;
+    color: black;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#freight #shipmentForm {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: auto;
+    gap: 10px;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+#freight #shipmentForm label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    width: auto;
+    align-self: self-start;
+}
+
+#shipmentForm input[type="text"],
+#shipmentForm input[type="number"] {
+    width: 400px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+#shipmentForm input[type="text"]:focus,
+#shipmentForm input[type="number"]:focus {
+    border: 2px solid green;
+    outline: none;
+}
+
+#freight .submit-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #008CBA;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    /* margin-left: 20px; */
+    align-self: self-start;
+}
+
+#freight .submit-button:hover {
+    background-color: green;
+}
+
+#submitMessage {
+    margin-top: 10px;
+    color: greenyellow;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Table Wrapper */
+#freight .table-wrapper {
+    /* margin-top: 20px; */
+    width:100%;
+    background-color: #ffffff;
+    /* padding: 20px; */
+    /* border-radius: 12px; */
+    /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
+    overflow-x: auto;
+}
+
+#freight .tableWrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+#freight #resultsTable {
+    border-collapse: collapse;
+    text-align: center;
+    width: 98%;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+#freight #resultsTable th,
+#freight #resultsTable td {
+    border: 1px solid black;
+    padding: 2px;
+}
+
+#freight #resultsTable th {
+    background-color: #ddd;
+    color: black;
+    font-size: 15px;
+}
+
+#freight #resultsTable td {
+    font-size: 14px;
+}
+.edit-icon {
+    color: #007bff;
+    font-size: 18px;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.edit-icon:hover {
+    color: #0056b3;
+}
+
+
+.edit-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+    background-color: red;
+}
+
+.edit-button i {
+    margin-right: 5px;
+}
+
+
+@media (max-width: 768px) {
+    .container-freight {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    label {
+        text-align: left;
+        min-width: 100%;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        max-width: 100%;
+    }
+
+    .submit-button {
+        width: 100%;
+    }
+
+    #resultsTable th,
+    #resultsTable td {
+        font-size: 14px;
+        padding: 2px;
+    }
+}

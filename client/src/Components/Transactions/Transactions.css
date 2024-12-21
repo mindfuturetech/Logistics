@@ -1,0 +1,176 @@
+#transactions {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 9%;
+    left: 5%;
+    width: 95%;
+    height: 91%;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+/* Form Styles */
+#transactions .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 80%;
+    margin-left: 10px;
+    justify-content: space-between;
+    align-items: self-start;
+}
+
+#transactions .form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    width: auto;
+    align-self: self-start;
+}
+
+#transactions .form-group input[type="date"] {
+    padding: 5px;
+    width: 30%;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+#transactions input[type="date"]:focus {
+    border: 2px solid green;
+    outline: none;
+}
+
+/* Button Styles */
+#transactions .search-button {
+    padding: 10px 20px;
+    width: 10%;
+    border: none;
+    border-radius: 4px;
+    background-color: #008CBA;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#transactions .search-button:hover {
+    background-color: green;
+}
+
+/* Header Styles */
+#transactions h1 {
+    text-align: center;
+    color: #333;
+}
+
+#transactions .month-header {
+    color: black;
+    font-size: 20px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+#transactions .date-header {
+    color: #333;
+    font-size: 18px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+/* Table Styles */
+#transactions .tableWrapper {
+    display: none;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-wrapper #resultsTable {
+    border-collapse: collapse;
+    text-align: center;
+    width: 98%;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+#transactions #resultsTable th,
+#transactions #resultsTable td {
+    border: 1px solid black;
+    padding: 2px;
+}
+
+#transactions #resultsTable th {
+    background-color: #ddd;
+    color: black;
+    font-size: 15px;
+}
+
+#transactions #resultsTable td {
+    font-size: 14px;
+}
+
+.no-data-message {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #666;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+
+.initial-message {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #666;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.error-message {
+    text-align: center;
+    padding: 10px;
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #transactions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    label {
+        text-align: left;
+        min-width: 100%;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        max-width: 100%;
+    }
+
+    .submit-button {
+        width: 100%;
+    }
+
+    #resultsTable th,
+    #resultsTable td {
+        font-size: 14px;
+        padding: 2px;
+    }
+}

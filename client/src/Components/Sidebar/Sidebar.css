@@ -1,0 +1,65 @@
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 9%;
+  left: 0;
+  height: 91%;
+  width: 5%; /* Default width for larger screens */
+  background:linear-gradient(to right, #1a1a1a, #333333);
+  overflow: hidden;
+  transition: width 0.3s ease;
+  color: white;
+  z-index: 1000;
+}
+
+/* Sidebar Menu Styling */
+.sidebar-menu {
+  list-style: none;
+  padding: 1rem 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+/* Sidebar Item Styling */
+.sidebar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.6rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  padding:0.2rem;
+}
+
+.sidebar-item span{
+text-align: center;
+}
+
+/* Sidebar Item Hover Effect */
+.sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 0.3rem;
+  border-radius: 6px;
+}
+/* Icon Styling */
+.icon {
+  font-size: 1.3rem;
+}
+
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 8%; /* Slightly reduced width for mid-sized screens */
+  }
+
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+      width: 9%; /* Reduced width for mobile screens */
+    }
+  }
+  
