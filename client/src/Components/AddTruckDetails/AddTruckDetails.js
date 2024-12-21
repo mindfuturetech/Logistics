@@ -57,6 +57,7 @@ const AddTruckDetails = () => {
       TruckNumber, DONumber, Date, DriverName, Vendor, DestinationFrom, DestinationTo,
       TruckType, TransactionStatus, Weight, Freight, Diesel, DieselAmount, DieselSlipNumber, Advance, Toll, Adblue, Greasing
     }
+
     try {
       const response = await axios.post('/reports', sendData, {
         withCredentials: true
@@ -141,6 +142,7 @@ const AddTruckDetails = () => {
             id="truckNumber"
             value={TruckNumber}
             onChange={(e) => setTruckNumber(e.target.value)}
+            required
           />
         </div>
         <div className="form-group">
@@ -151,6 +153,7 @@ const AddTruckDetails = () => {
             id="doNumber"
             value={DONumber}
             onChange={(e) => setDONumber(e.target.value)}
+            required
           />
         </div>
         {/* <div className="form-group">
@@ -169,6 +172,7 @@ const AddTruckDetails = () => {
             id="date"
             value={Date}
             onChange={(e) => setDate(e.target.value)}
+            required
           />
         </div>
         <div className="form-group">
@@ -178,6 +182,7 @@ const AddTruckDetails = () => {
             id="driverName"
             value={DriverName}
             onChange={(e) => setDriverName(e.target.value)}
+            required
           />
         </div>
         <div className="form-group">
@@ -186,11 +191,13 @@ const AddTruckDetails = () => {
             id="vendors"
             value={Vendor}
             onChange={(e) => setVendor(e.target.value)}
+            required
           >
             <option value="">Select Vendor</option>
             <option value="vendor1">Vendor 1</option>
             <option value="vendor2">Vendor 2</option>
             <option value="vendor3">Vendor 3</option>
+            
           </select>
         </div>
         <div className="form-group">
@@ -199,6 +206,7 @@ const AddTruckDetails = () => {
             id="destinationFrom"
             value={DestinationFrom}
             onChange={(e) => setDestinationFrom(e.target.value)}
+            required
           >
             <option value="">Select Destination From</option>
             <option value="destination1">Destination 1</option>
@@ -212,6 +220,7 @@ const AddTruckDetails = () => {
             id="destinationTo"
             value={DestinationTo}
             onChange={(e) => setDestinationTo(e.target.value)}
+            required
           >
             <option value="">Select Destination To</option>
             <option value="destination1">Destination 1</option>
@@ -225,6 +234,7 @@ const AddTruckDetails = () => {
             id="truckType"
             value={TruckType}
             onChange={(e) => setTruckType(e.target.value)}
+            required
           >
             <option value="">Select Truck Type</option>
             <option value="type1">Type 1</option>
@@ -238,6 +248,7 @@ const AddTruckDetails = () => {
             id="transactionStatus"
             value={TransactionStatus}
             onChange={(e) => setTransactionStatus(e.target.value)}
+            required
           >
             <option value="">Select Transaction Status</option>
             <option value="open">Open</option>
@@ -251,6 +262,7 @@ const AddTruckDetails = () => {
             id="Weight"
             value={Weight}
             onChange={(e) => setWeight(e.target.value)}
+            required
           />
         </div>
         <div className="form-group">
@@ -261,6 +273,7 @@ const AddTruckDetails = () => {
             id="Freight"
             value={Freight}
             onChange={(e) => setFreight(e.target.value)}
+            required
           />
         </div>
         <div className="form-group">
@@ -270,6 +283,7 @@ const AddTruckDetails = () => {
             id="Diesel"
             value={Diesel}
             onChange={(e) => setDiesel(e.target.value)}
+            required
           />
         </div>
         <div className="form-group">
@@ -280,6 +294,7 @@ const AddTruckDetails = () => {
             id="Diesel Amount"
             value={DieselAmount}
             onChange={(e) => setDieselAmount(e.target.value)}
+            required
           />
         </div>
         <div className="form-group">
@@ -290,6 +305,7 @@ const AddTruckDetails = () => {
             id="DieselSlipNumber"
             value={DieselSlipNumber}
             onChange={(e) => setDieselSlipNumber(e.target.value)}
+            required
           />
         </div>
         <div className="form-group">
@@ -299,6 +315,7 @@ const AddTruckDetails = () => {
             id="Advance"
             value={Advance}
             onChange={(e) => setAdvance(e.target.value)}
+            required
           />
         </div>
         <div className="form-group">
@@ -309,6 +326,7 @@ const AddTruckDetails = () => {
             id="Toll"
             value={Toll}
             onChange={(e) => setToll(e.target.value)}
+            required
           />
         </div>
         <div className="form-group">
@@ -319,6 +337,7 @@ const AddTruckDetails = () => {
             id="Adblue"
             value={Adblue}
             onChange={(e) => setAdblue(e.target.value)}
+            required
           />
         </div>
         <div className="form-group">
@@ -329,6 +348,7 @@ const AddTruckDetails = () => {
             id="Greasing"
             value={Greasing}
             onChange={(e) => setGreasing(e.target.value)}
+            required
           />
         </div>
         <button type="submit" className="submit-button">

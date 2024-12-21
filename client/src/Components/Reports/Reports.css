@@ -1,5 +1,168 @@
-.reports{
+/* .reports{
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
+
+.reports-container {
+    position: absolute;
+    top: 9%;
+    left: 5%;
+    width: 95%;
+    height: 91%;
+    padding: 2rem;
+    background-color: #f5f5f5;
+    overflow-y: auto;
+  }
+  
+  .filter-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+  
+  .filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .filter-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .filter-item label {
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .filter-item input,
+  .filter-item select {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+  }
+  
+  .submit-btn,
+  .download-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .submit-btn {
+    background-color: #2196f3;
+    color: white;
+  }
+  
+  .download-btn {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .submit-btn:hover,
+  .download-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .table-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
+  }
+  
+  th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  tr:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .edit-btn,
+  .save-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .edit-btn {
+    background-color: #2196f3;
+    color: white;
+  }
+  
+  .save-btn {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .edit-btn:hover,
+  .save-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  input[type="file"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  @media (max-width: 768px) {
+    .reports-container {
+      left: 9%;
+      width: 91%;
+      padding: 1rem;
+    }
+  
+    .filters-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .button-group {
+      flex-direction: column;
+    }
+  
+    th, td {
+      padding: 0.75rem;
+      font-size: 0.9rem;
+    }
+  }
