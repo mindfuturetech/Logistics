@@ -9,7 +9,6 @@ axios.defaults.baseURL = 'http://localhost:5000/logistics';
 const AddTruckDetails = () => {
   const [TruckNumber, setTruckNumber] = useState('');
   const [DONumber, setDONumber] = useState('');
-  // const [Time, setTime] = useState('');
   const [Date, setDate] = useState('');
   const [DriverName, setDriverName] = useState('');
   const [Vendor, setVendor] = useState('');
@@ -18,7 +17,6 @@ const AddTruckDetails = () => {
   const [TruckType, setTruckType] = useState('');
   const [TransactionStatus, setTransactionStatus] = useState('');
   const [Weight, setWeight] = useState('');
-  const [DifferenceInWeight, setDifferenceInWeight] = useState('');
   const [Freight, setFreight] = useState('');
   const [Diesel, setDiesel] = useState('');
   const [DieselAmount, setDieselAmount] = useState('');
@@ -27,31 +25,30 @@ const AddTruckDetails = () => {
   const [Toll, setToll] = useState('');
   const [Adblue, setAdblue] = useState('');
   const [Greasing, setGreasing] = useState('');
-  const [truckImage, setTruckImage] = useState(null);
-  const [loadingAdvice, setLoadingAdvice] = useState(null);
-  const [invoiceCompany, setInvoiceCompany] = useState(null);
-  const [weighmentSlip, setWeighmentSlip] = useState(null);
-
-  // const handleTruckImageUpload = (e) => {
-  //   setTruckImage(e.target.files[0]);
-  // };
-
-  // const handleLoadingAdviceUpload = (e) => {
-  //   setLoadingAdvice(e.target.files[0]);
-  // };
-
-  // const handleInvoiceCompanyUpload = (e) => {
-  //   setInvoiceCompany(e.target.files[0]);
-  // };
-
-  // const handleWeighmentSlipUpload = (e) => {
-  //   setWeighmentSlip(e.target.files[0]);
-  // };
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle form submission logic here
+    setTruckNumber('');
+    setDONumber('');
+    setDate('');
+    setDriverName('');
+    setVendor('');
+    setDestinationFrom('');
+    setDestinationTo('');
+    setTruckType('');
+    setTransactionStatus('');
+    setWeight('');
+    setFreight('');
+    setDiesel('');
+    setDieselAmount('');
+    setDieselSlipNumber('');
+    setAdvance('');
+    setToll('');
+    setAdblue('');
+    setGreasing('');
+    
 
     let sendData = {
       TruckNumber, DONumber, Date, DriverName, Vendor, DestinationFrom, DestinationTo,
@@ -79,60 +76,6 @@ const AddTruckDetails = () => {
     <div
       className={`add-truck-details-container`}
     >
-      {/* 
-      <h2 className="add-truck-details-title">Upload Truck Details</h2>
-
-      <div className="image-upload-section">
-        <div className="image-upload-item">
-          <label htmlFor="truckImage" className="image-upload-label">
-            <FiUploadCloud className="image-upload-icon" />
-            Upload Truck Image
-          </label>
-          <input
-            type="file"
-            id="truckImage"
-            onChange={handleTruckImageUpload}
-            className="image-upload-input"
-          />
-        </div>
-        <div className="image-upload-item">
-          <label htmlFor="loadingAdvice" className="image-upload-label">
-            <FiUploadCloud className="image-upload-icon" />
-            Loading Advice
-          </label>
-          <input
-            type="file"
-            id="loadingAdvice"
-            onChange={handleLoadingAdviceUpload}
-            className="image-upload-input"
-          />
-        </div>
-        <div className="image-upload-item">
-          <label htmlFor="invoiceCompany" className="image-upload-label">
-            <FiUploadCloud className="image-upload-icon" />
-            Invoice-Company
-          </label>
-          <input
-            type="file"
-            id="invoiceCompany"
-            onChange={handleInvoiceCompanyUpload}
-            className="image-upload-input"
-          />
-        </div>
-        <div className="image-upload-item">
-          <label htmlFor="weighmentSlip" className="image-upload-label">
-            <FiUploadCloud className="image-upload-icon" />
-            Weighment Slip
-          </label>
-          <input
-            type="file"
-            id="weighmentSlip"
-            onChange={handleWeighmentSlipUpload}
-            className="image-upload-input"
-          />
-        </div>
-      </div>
- */}
 
       <form onSubmit={handleSubmit} className="add-truck-details-form">
         <div className="form-group">

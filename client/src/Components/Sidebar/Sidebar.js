@@ -46,11 +46,11 @@ const Sidebar = () => {
           <FaUserTie className="icon" />
           <span>Vendor Master</span>
         </li>
-        <li className="sidebar-item" onClick={handleReports}>
+        <li className="sidebar-item repo" onClick={handleReports}>
           <FaChartBar className="icon" />
           <span>Reports</span>
         </li>
-        <li className="sidebar-item">
+        <li className="sidebar-item bill">
           <FaMoneyBill className="icon" />
           <span>Billing</span>
         </li>

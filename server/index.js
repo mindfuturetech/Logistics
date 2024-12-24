@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const path = require('path');
 require('dotenv').config();
-
 
 const app = express();
 const connectDB = require('./config/db');
@@ -22,6 +22,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 connectDB();
+
+
 
 //Route
 app.use('/logistics',route);

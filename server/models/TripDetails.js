@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const truckDetailsSchema = new mongoose.Schema({
+const tripDetailsSchema = new mongoose.Schema({
     TruckNumber:{
         type:String,
         required:true,
@@ -50,11 +50,11 @@ const truckDetailsSchema = new mongoose.Schema({
     },
     ActualWeight:{
         type:Number,
-        default:0
+        default:null
     },
     DifferenceInWeight:{
         type:Number,
-        default:0
+        default:null
     },
     Freight:{
         type:Number,
@@ -89,16 +89,20 @@ const truckDetailsSchema = new mongoose.Schema({
         required:true
     },
     DieselSlipImage:{
-        filepath:{type:String,default:null}
+        filepath:{type:String,default:null},
+        originalname:{type:String,default:null}
     },
     LoadingAdvice:{
-        filepath:{type:String,default:null}
+        filepath:{type:String,default:null},
+        originalname:{type:String,default:null}
     },
     InvoiceCompany:{
-        filepath:{type:String,default:null}
+        filepath:{type:String,default:null},
+        originalname:{type:String,default:null}
     },
     WeightmentSlip:{
-        filepath:{type:String,default:null}
+        filepath:{type:String,default:null},
+        originalname:{type:String,default:null}
     },
 
 
@@ -107,4 +111,4 @@ const truckDetailsSchema = new mongoose.Schema({
 
 
 
-  module.exports = mongoose.model('TruckDetails',truckDetailsSchema);
+  module.exports = mongoose.model('TripDetails',tripDetailsSchema);
