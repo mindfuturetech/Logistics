@@ -11,10 +11,6 @@ const tripDetailsSchema = new mongoose.Schema({
         required:true,
         trim:true
     },
-    Date:{
-        type:Date,
-        required:true
-    },
     DriverName:{
         type:String,
         required:true,
@@ -72,6 +68,10 @@ const tripDetailsSchema = new mongoose.Schema({
         type:Number,
         required:true
     },
+    TDS_Rate:{
+        type:Number,
+        required:true
+    },
     Advance:{
         type:Number,
         required:true
@@ -87,6 +87,10 @@ const tripDetailsSchema = new mongoose.Schema({
     Greasing:{
         type:Number,
         required:true
+    },
+    BillId:{
+        type:Number,
+        default:null
     },
     DieselSlipImage:{
         filepath:{type:String,default:null},

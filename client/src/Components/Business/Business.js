@@ -3,28 +3,23 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
-import './Reports.css';
+import './Business.css';
 
 axios.defaults.baseURL = 'http://localhost:5000/logistics';
 
 
-const Reports = () => {
+const Business = () => {
   const [filters, setFilters] = useState({
     startDate: '',
     endDate: '',
-    vendor: '',
+    vendor:'',
     truckNumber: ''
   });
 
-  const [vendors, setVendors] = useState([]);
   const [truckNumbers, setTruckNumbers] = useState([]);
-  const [vendorQuery, setVendorQuery] = useState('');
   const [truckQuery, setTruckQuery] = useState('');
-  const [showVendorDropdown, setShowVendorDropdown] = useState(false);
   const [showTruckDropdown, setShowTruckDropdown] = useState(false);
   const [tableData, setTableData] = useState([]);
-  const [editingRow, setEditingRow] = useState(null);
-  const [selectedFiles, setSelectedFiles] = useState({});
 
   const handleDownload = async (id, field, originalname) => {
     try {
@@ -48,11 +43,7 @@ const Reports = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Close vendor dropdown if click is outside
-      console.log('closest:', event.target.closest('.d1'));
-      if (showVendorDropdown && !event.target.closest('.d1')) {
-        setShowVendorDropdown(false);
-      }
+
       // Close truck dropdown if click is outside
       if (showTruckDropdown && !event.target.closest('.d2')) {
         setShowTruckDropdown(false);
@@ -66,26 +57,14 @@ const Reports = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [showVendorDropdown, showTruckDropdown]);
+  }, [ showTruckDropdown]);
 
 
   useEffect(() => {
-    // Fetch vendors and truck numbers for dropdowns
-    fetchVendors();
+    // Fetch truck numbers for dropdowns
     fetchTruckNumbers();
   }, []);
 
-  const fetchVendors = async () => {
-    try {
-      const response = await axios.get('/api/vendors');
-      
-      setVendors(response.data.vendorData);
-      console.log(vendors);
-    } catch (error) {
-      console.error('Error fetching vendors:', error);
-      alert('Error fetching vendors')
-    }
-  };
 
   const fetchTruckNumbers = async () => {
     try {
@@ -105,10 +84,6 @@ const Reports = () => {
     }
   };
 
-  const filteredVendors = vendors.filter((vendor) =>
-    vendor.company_name.toLowerCase().startsWith(vendorQuery.toLowerCase())
-  )
-
   const filteredTrucks = truckNumbers.filter((truck) =>
     truck.truck_no.toLowerCase().startsWith(truckQuery.toLowerCase())
   );
@@ -126,9 +101,9 @@ const Reports = () => {
     
     e.preventDefault();
     setShowTruckDropdown(false);
-    setShowVendorDropdown(false);
+
     console.log('filters: ', filters);
-    if (!(filters.startDate && filters.endDate) && !filters.vendor && !filters.truckNumber) {
+    if (!(filters.startDate && filters.endDate) && !filters.truckNumber) {
       alert('Please select at least one filter');
       return;
     }
@@ -151,93 +126,38 @@ const Reports = () => {
     }
   };
 
-  const handleEdit = (rowId) => {
-    setEditingRow(rowId);
-    setSelectedFiles({});
-  };
 
-  const handleFileSelect = (e, rowId, fieldName) => {
-    const file = e.target.files[0];
-    setSelectedFiles({
-      ...selectedFiles,
-      [`${rowId}-${fieldName}`]: e.target.files[0]
-    });
+//   const todayList = async()=>{
+
+//     const today = new Date();
+//     today.setHours(0, 0, 0, 0);
+//     const todayEnd = new Date(today);
+//     todayEnd.setHours(23, 59, 59, 999);
     
-  };
+//     const todayFilters = {
+//       startDate: today.toISOString(),
+//       endDate: todayEnd.toISOString(),
+//       vendor: '',
+//       truckNumber: ''
+//     };
 
-  const handleSave = async (row) => {
-    const formData = new FormData();
-    formData.append('id', row._id);
-    formData.append('transactionStatus', row.TransactionStatus);
-    formData.append('weight', row.Weight);
-    formData.append('actualWeight', row.ActualWeight);
+//     try{
+//       const response = await axios.get('/api/reports', { params: todayFilters });
+//       console.log('table data :',response.data.tableData);
+//       setTableData(response.data.tableData);
 
-
-    // Append any selected files
-    Object.keys(selectedFiles).forEach(key => {
-      if (key.startsWith(row._id)) {
-        const fieldName = key.split('-')[1];
-        formData.append(fieldName, selectedFiles[key]);
-      }
-    });
-
-    try {
-      await axios.post(`/api/reports/${row._id}`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
-      });
-
-      // Refresh data
-      const response = await axios.get('/api/reports', { params: filters });
-      setTableData(response.data);
-      setEditingRow(null);
-      setSelectedFiles({});
-
-      if(response.data.message){
-        alert(response.data.message);
-      }
-    } catch (error) {
-      if(error.response.data.message){
-        alert(error.response.data.message);
-      }
-      else{
-        alert('Error updating the record');
-      }
-    }
-  };
-
-  const todayList = async()=>{
-
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const todayEnd = new Date(today);
-    todayEnd.setHours(23, 59, 59, 999);
-    
-    const todayFilters = {
-      startDate: today.toISOString(),
-      endDate: todayEnd.toISOString(),
-      vendor: '',
-      truckNumber: ''
-    };
-
-    try{
-      console.log('startdate:',todayFilters.startDate)
-      console.log('endDate:',todayFilters.endDate)
-      const response = await axios.get('/api/reports', { params: todayFilters });
-      console.log('today table data :',response.data.tableData);
-      setTableData(response.data.tableData);
-
-      if(response?.data?.tableData?.length===0){
-        alert('No records available');
-      }
+//       if(response?.data?.tableData?.length===0){
+//         alert('No records available');
+//       }
       
-    }catch(error){
-      if(error.response.data.message){
-        alert(error.response.data.message)
-      }else{
-        alert(`Error fetching Today's list`);
-      }
-    }
-  }
+//     }catch(error){
+//       if(error.response.data.message){
+//         alert(error.response.data.message)
+//       }else{
+//         alert(`Error fetching Today's list`);
+//       }
+//     }
+//   }
 
   const downloadExcel = () => {
     
@@ -288,47 +208,6 @@ const Reports = () => {
               />
             </div>
 
-            <div className="filter-item d1">
-            <label>Vendor</label>
-        <input
-          type="text"
-          name="vendor"
-          autocomplete="off"
-          value={vendorQuery}
-          onChange={(e) => {
-            setVendorQuery(e.target.value)
-            handleFilterChange(e);
-            }}
-          onClick={() => setShowVendorDropdown(true)}
-          
-        />
-        {showVendorDropdown && vendorQuery && (
-          <ul className="dropdown">
-            {filteredVendors.map((vendor) => (
-              <li
-                key={vendor._id }
-                onClick={() => {
-                  setFilters({ ...filters, vendor: vendor.company_name });
-                  setVendorQuery(vendor.company_name);
-                  setShowVendorDropdown(false);
-                }}
-                style={{
-                  padding: '5px',
-                  cursor: 'pointer',
-                  borderBottom: '1px solid #ddd',
-                }}
-              >
-                {vendor.company_name}
-              </li>
-            ))}
-            {filteredVendors.length === 0 && (
-              <li style={{ padding: '5px' }}>No vendors found</li>
-            )}
-          </ul>
-        )}
-
-            </div>
-
             <div className="filter-item d2">
             <label>Truck Number</label>
         <input
@@ -373,7 +252,7 @@ const Reports = () => {
 
             <div className="button-group">
               <button type="submit" className="submit-btn">Submit</button>
-              <button type="button" className="today-list-btn" onClick={todayList}>Today's List</button>
+              {/* <button type="button" className="today-list-btn" onClick={todayList}>Today's List</button> */}
               {tableData.length > 0
                && (
                 <button type="button" className="download-btn" onClick={downloadExcel}>
@@ -416,8 +295,6 @@ const Reports = () => {
                   <th>Loading Advice</th>
                   <th>Invoice Company</th>
                   <th>Weightment Slip</th>
-                  {/* <th>% TDS</th> */}
-                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -432,66 +309,10 @@ const Reports = () => {
                     <td>{row.DestinationFrom}</td>
                     <td>{row.DestinationTo}</td>
                     <td>{row.TruckType}</td>
-                    <td>
-                      {editingRow === row._id ? (
-                        <select
-                          value={row.TransactionStatus}
-                          onChange={(e) => {
-                            const newData = tableData.map(item =>
-                              item._id === row._id
-                                ? { ...item, TransactionStatus: e.target.value }
-                                : item
-                            );
-                            setTableData(newData);
-                          }}
-                        >
-                          <option value="Open">Open</option>
-                          <option value="Acknowledged">Acknowledged</option>
-
-                        </select>
-                      ) : (
-                        row.TransactionStatus
-                      )}</td>
+                    <td>{row.TransactionStatus}</td>
                     <td>{row.Weight}</td>
-                    <td>
-                      {editingRow === row._id ? (
-                        <input
-                        className='editInput'
-                          type="number"
-                          value={row.ActualWeight}
-                          onChange={(e) => {
-                            const newData = tableData.map(item =>
-                              item._id === row._id
-                                ? { ...item, ActualWeight: e.target.value }
-                                : item
-                            );
-                            setTableData(newData);
-                          }}
-                        />
-                      ) : (
-                        row.ActualWeight
-                      )}
-                    </td>
-                    <td>
-                      {/* {editingRow === row._id ? (
-                        <input 
-                          className='editInput'
-                          type="number"
-                          value={row.DifferenceInWeight}
-                          onChange={(e) => {
-                            const newData = tableData.map(item =>
-                              item._id === row._id
-                                ? { ...item, DifferenceInWeight: e.target.value }
-                                : item
-                            );
-                            setTableData(newData);
-                          }}
-                        />
-                      ) : (
-                        row.DifferenceInWeight
-                      )} */}
-                      {row.DifferenceInWeight}
-                    </td>
+                    <td>{row.ActualWeight}</td>
+                    <td>{row.DifferenceInWeight}</td>
                     <td>{row.Freight}</td>
                     <td>{row.Diesel}</td>
                     <td>{row.DieselAmount}</td>
@@ -501,18 +322,9 @@ const Reports = () => {
                     <td>{row.Toll}</td>
                     <td>{row.Adblue}</td>
                     <td>{row.Greasing}</td>
-                    {/* <td>{row.PercentTDS}</td> */}
                     {['DieselSlipImage', 'LoadingAdvice', 'InvoiceCompany', 'WeightmentSlip'].map(field => (
                       <td key={field}>
-                        {editingRow === row._id ? (
-                          <input
-                            type="file"
-                            name={field}
-                            onChange={(e) => handleFileSelect(e, row._id, field)}
-                            accept="image/*,.pdf"
-                            max="1"
-                          />
-                        ) : row[field]?.filepath ? (
+                        {row[field]?.filepath ? (
                             <button
                             className="download-link-btn"
                             onClick={() => handleDownload(row._id, field, row[field].originalname)}
@@ -524,23 +336,6 @@ const Reports = () => {
                         )}
                       </td>
                     ))}
-                    <td>
-                      {editingRow === row._id ? (
-                        <button
-                          className="save-btn"
-                          onClick={() => handleSave(row)}
-                        >
-                          Save
-                        </button>
-                      ) : (
-                        <button
-                          className="edit-btn"
-                          onClick={() => handleEdit(row._id)}
-                        >
-                          Edit
-                        </button>
-                      )}
-                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -552,4 +347,4 @@ const Reports = () => {
   );
 };
 
-export default Reports;
+export default Business;

@@ -9,7 +9,6 @@ axios.defaults.baseURL = 'http://localhost:5000/logistics';
 const AddTruckDetails = () => {
   const [TruckNumber, setTruckNumber] = useState('');
   const [DONumber, setDONumber] = useState('');
-  const [Date, setDate] = useState('');
   const [DriverName, setDriverName] = useState('');
   const [Vendor, setVendor] = useState('');
   const [DestinationFrom, setDestinationFrom] = useState('');
@@ -21,6 +20,7 @@ const AddTruckDetails = () => {
   const [Diesel, setDiesel] = useState('');
   const [DieselAmount, setDieselAmount] = useState('');
   const [DieselSlipNumber, setDieselSlipNumber] = useState('');
+  const [TDS_Rate, setTDS_Rate] = useState('');
   const [Advance, setAdvance] = useState('');
   const [Toll, setToll] = useState('');
   const [Adblue, setAdblue] = useState('');
@@ -32,7 +32,6 @@ const AddTruckDetails = () => {
     // Handle form submission logic here
     setTruckNumber('');
     setDONumber('');
-    setDate('');
     setDriverName('');
     setVendor('');
     setDestinationFrom('');
@@ -44,6 +43,7 @@ const AddTruckDetails = () => {
     setDiesel('');
     setDieselAmount('');
     setDieselSlipNumber('');
+    setTDS_Rate('');
     setAdvance('');
     setToll('');
     setAdblue('');
@@ -51,8 +51,8 @@ const AddTruckDetails = () => {
     
 
     let sendData = {
-      TruckNumber, DONumber, Date, DriverName, Vendor, DestinationFrom, DestinationTo,
-      TruckType, TransactionStatus, Weight, Freight, Diesel, DieselAmount, DieselSlipNumber, Advance, Toll, Adblue, Greasing
+      TruckNumber, DONumber,DriverName, Vendor, DestinationFrom, DestinationTo,
+      TruckType, TransactionStatus, Weight, Freight, Diesel, DieselAmount, DieselSlipNumber,TDS_Rate ,Advance, Toll, Adblue, Greasing
     }
 
     try {
@@ -108,16 +108,6 @@ const AddTruckDetails = () => {
                 onChange={(e) => setTime(e.target.value)} 
             />
         </div> */}
-        <div className="form-group">
-          <label htmlFor="date">Select a date:</label>
-          <input
-            type="date"
-            id="date"
-            value={Date}
-            onChange={(e) => setDate(e.target.value)}
-            required
-          />
-        </div>
         <div className="form-group">
           <label htmlFor="driverName">Driver Name:</label>
           <input
@@ -248,6 +238,17 @@ const AddTruckDetails = () => {
             id="DieselSlipNumber"
             value={DieselSlipNumber}
             onChange={(e) => setDieselSlipNumber(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="TDS_Rate">TDS Rate:</label>
+          <input
+            type="number"
+            step="any"
+            id="TDS_Rate"
+            value={TDS_Rate}
+            onChange={(e) => setTDS_Rate(e.target.value)}
             required
           />
         </div>

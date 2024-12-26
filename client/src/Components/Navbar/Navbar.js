@@ -7,8 +7,9 @@ import logo from '../../Images/logo.jpg';
 import Sidebar from '../Sidebar/Sidebar';
 import {useAuth} from '../../Auth/AuthContext'
 import '../../Pages/HomePage/HomePage.css';
+import { FaBell } from "react-icons/fa";
 
-const Navbar = ({toggleSidebar, isCollapsed})=>{
+const Navbar = ()=>{
 
     const navigate =useNavigate();
     const location = useLocation();
@@ -24,7 +25,7 @@ const Navbar = ({toggleSidebar, isCollapsed})=>{
         const Reports = 'Reports';
         const Billing = 'Billing';
         const Transactions = 'Transactions'
-        const Expenses = 'Expenses';
+        const Business = 'Business';
 
         if(path === '/home'){
             return Home;
@@ -47,13 +48,13 @@ const Navbar = ({toggleSidebar, isCollapsed})=>{
         else if(path === '/'){
             return Transactions;
         }
-        else if(path === '/'){
-            return Expenses;
+        else if(path === '/business'){
+            return Business;
         }
     };
 
     const handleBack = () =>{
-        navigate(-1);
+        navigate('/home');
     };
 
     // const handleHome = () =>{
@@ -75,9 +76,13 @@ const Navbar = ({toggleSidebar, isCollapsed})=>{
             </div>
 
             <div className='nav-buttons-right'>
-                <button className='nav-button back-button' onClick={handleBack}>
+            <button className='nav-button back-button'>
+                    <FaBell className='button-icon'/>
+                    
+                </button>
+                <button className='nav-button back-button'>
                     <FaArrowLeft className='button-icon' />
-                    <span>Back</span>
+                    
                 </button>
                 <Logout />
             </div>

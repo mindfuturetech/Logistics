@@ -10,6 +10,7 @@ import Logout from '../../Components/Logout/Logout';
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import AddTruckDetails from '../../Components/AddTruckDetails/AddTruckDetails';
 import Reports from '../../Components/Reports/Reports';
+import Business from '../../Components/Business/Business';
 
 axios.defaults.baseURL = 'http://localhost:5000/logistics';
 
@@ -28,8 +29,8 @@ const HomePage = () => {
           case '/reports':
             setCurrentComponent(<Reports />);
             break;
-          default:
-            setCurrentComponent(null); // Handle any other routes if necessary
+          case '/business':
+            setCurrentComponent(<Business />);
             break;
         }
       }, [location.pathname]); 

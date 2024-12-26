@@ -45,6 +45,10 @@ function App() {
             path='/reports' 
             element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} 
           />
+          <Route 
+            path='/business' 
+            element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} 
+          />
         
         </Routes>
       </div>

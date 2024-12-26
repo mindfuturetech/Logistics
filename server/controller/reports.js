@@ -7,15 +7,15 @@ const path = require('path')
 const fs = require('fs');
 
 const reports = async(req,res) =>{
-    const {TruckNumber,DONumber,Date,DriverName,Vendor,DestinationFrom,DestinationTo,
-    TruckType,TransactionStatus,Weight,Freight,Diesel,DieselAmount,DieselSlipNumber,Advance,Toll,Adblue,Greasing} = req.body;
+    const {TruckNumber,DONumber,DriverName,Vendor,DestinationFrom,DestinationTo,
+    TruckType,TransactionStatus,Weight,Freight,Diesel,DieselAmount,DieselSlipNumber,TDS_Rate,Advance,Toll,Adblue,Greasing} = req.body;
     
     console.log(req.body);
 
 
     try{
-        const data = await TripDetails.create({TruckNumber,DONumber,Date,DriverName,Vendor,DestinationFrom,DestinationTo,
-        TruckType,TransactionStatus,Weight,Freight,Diesel,DieselAmount,DieselSlipNumber,Advance,Toll,Adblue,Greasing})
+        const data = await TripDetails.create({TruckNumber,DONumber,DriverName,Vendor,DestinationFrom,DestinationTo,
+        TruckType,TransactionStatus,Weight,Freight,Diesel,DieselAmount,DieselSlipNumber,TDS_Rate,Advance,Toll,Adblue,Greasing})
       
         console.log(data);
         
@@ -49,13 +49,18 @@ const getVendorData = async(req,res)=>{
 
 const getTableData = async (req, res) => {
     const {startDate, endDate, vendor, truckNumber} = req.query;
+
     try {
       const query = {};
       
       if (startDate && endDate) {
-        query.Date = {
-          $gte: new Date(startDate),
-          $lte: new Date(endDate)
+        const start= new Date(startDate);
+        const end=  new Date(endDate);
+        end.setHours(23, 59, 59, 999);
+
+        query.createdAt = {
+          $gte: start,
+          $lte: end
         };
       }
       
@@ -70,13 +75,15 @@ const getTableData = async (req, res) => {
       const tableData = await TripDetails.find(query);
       console.log('Found records:', tableData.length);
       console.log('Sample record:', tableData[0]);
+      console.log('Start date:', new Date(startDate));
+      console.log('End Date:', new Date(endDate));
+
       
-      res.status(200).json({tableData:tableData});
-
-      if(!tableData){
-        res.status(200).json({tableData:[]});
-      }
-
+      if(tableData){
+        return res.status(200).json({tableData:tableData});
+        }else{
+            return res.status(200).json({tableData:[]});
+        }
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Error fetching table data' });

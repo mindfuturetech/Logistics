@@ -26,6 +26,9 @@ const Sidebar = () => {
     const handleReports = () =>{
         navigate('/reports');
     };
+    const handleBusiness = () =>{
+        navigate('/business');
+    };
 
   return (
     <aside className={`sidebar`}>
@@ -58,9 +61,9 @@ const Sidebar = () => {
           <FaMoneyCheckAlt className="icon" />
           <span>Transactions</span>
         </li>
-        <li className="sidebar-item">
+        <li className="sidebar-item" onClick={handleBusiness}>
           <FaClipboard className="icon" />
-          <span>Expenses</span>
+          <span>Business</span>
         </li>
       </ul>
     </aside>
