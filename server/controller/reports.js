@@ -1,8 +1,9 @@
 const TripDetails = require('../models/TripDetails');
 const Vehicle = require('../models/vehicle_model');
 const Vendor = require('../models/vendor_model');
+const Destination = require('../models/freight_model');
 const multer = require('multer');
-const upload = require('../multer/multer1');
+const upload = require('../multer/imageMulter');
 const path = require('path')
 const fs = require('fs');
 
@@ -33,7 +34,7 @@ const getTruckData = async (req,res)=>{
         const truckData = await Vehicle.find({});
         return res.status(200).json({truckData});
     }catch(error){
-        return res.status(500).json({message:'Error fetching the data'});
+        return res.status(500).json({message:'Error fetching truck numbers'});
     }
 
 }
@@ -43,7 +44,17 @@ const getVendorData = async(req,res)=>{
         const vendorData = await Vendor.find({});
         return res.status(200).json({vendorData});
     }catch(error){
-        return res.status(500).json({message:'Error fetching the Data'});
+        return res.status(500).json({message:'Error fetching vendors'});
+    }
+}
+
+
+const getDestinationData = async(req,res)=>{
+    try{
+        const destinationData = await Destination.find({});
+        return res.status(200).json({destinationData});
+    }catch(error){
+        return res.status(500).json({message:'Error fetching destination data'});
     }
 }
 
@@ -186,4 +197,4 @@ const getTableData = async (req, res) => {
   }
   
 
-module.exports = {reports, getTruckData, getVendorData, getTableData,updateTripData, downloadFile};
+module.exports = {reports, getTruckData, getVendorData, getDestinationData, getTableData, updateTripData, downloadFile};

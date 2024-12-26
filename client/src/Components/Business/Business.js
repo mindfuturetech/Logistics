@@ -108,6 +108,11 @@ const Business = () => {
       return;
     }
 
+    if((filters.startDate && filters.endDate) && !filters.truckNumber){
+        alert('Please select a truck number');
+        return;
+    }
+
     try {
       const response = await axios.get('/api/reports', { params: filters });
       console.log('table data :',response.data.tableData);
@@ -126,38 +131,6 @@ const Business = () => {
     }
   };
 
-
-//   const todayList = async()=>{
-
-//     const today = new Date();
-//     today.setHours(0, 0, 0, 0);
-//     const todayEnd = new Date(today);
-//     todayEnd.setHours(23, 59, 59, 999);
-    
-//     const todayFilters = {
-//       startDate: today.toISOString(),
-//       endDate: todayEnd.toISOString(),
-//       vendor: '',
-//       truckNumber: ''
-//     };
-
-//     try{
-//       const response = await axios.get('/api/reports', { params: todayFilters });
-//       console.log('table data :',response.data.tableData);
-//       setTableData(response.data.tableData);
-
-//       if(response?.data?.tableData?.length===0){
-//         alert('No records available');
-//       }
-      
-//     }catch(error){
-//       if(error.response.data.message){
-//         alert(error.response.data.message)
-//       }else{
-//         alert(`Error fetching Today's list`);
-//       }
-//     }
-//   }
 
   const downloadExcel = () => {
     

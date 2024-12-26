@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiUploadCloud } from 'react-icons/fi';
 import './AddTruckDetails.css';
 import '../../Pages/HomePage/HomePage.css'
@@ -26,6 +26,120 @@ const AddTruckDetails = () => {
   const [Adblue, setAdblue] = useState('');
   const [Greasing, setGreasing] = useState('');
 
+  
+    const [vendorsList, setVendorsList] = useState([]);
+    const [truckNumbersList, setTruckNumbersList] = useState([]);
+    const [destinationList, setDestinationList] = useState([]);
+
+    const [showVendorDropdown, setShowVendorDropdown] = useState(false);
+    const [showTruckDropdown, setShowTruckDropdown] = useState(false);
+    const [showDestinationFromDropdown, setShowDestinationFromDropdown] = useState(false);
+    const [showDestinationToDropdown, setShowDestinationToDropdown] = useState(false);
+
+
+    
+    useEffect(() => {
+      const handleClickOutside = (event) => {
+        // Close vendor dropdown if click is outside
+        if (showVendorDropdown && !event.target.closest('.da1')) {
+          setShowVendorDropdown(false);
+        }
+        // Close truck dropdown if click is outside
+        if (showTruckDropdown && !event.target.closest('.da2')) {
+          setShowTruckDropdown(false);
+        }
+        // Close DestinationFrom dropdown if click is outside
+        if (showDestinationFromDropdown && !event.target.closest('.da3')) {
+          setShowDestinationFromDropdown(false);
+        }
+        // Close DestinationTo dropdown if click is outside
+        if (showDestinationToDropdown && !event.target.closest('.da4')) {
+          setShowDestinationToDropdown(false);
+        }
+      };
+  
+      // Add event listener
+      document.addEventListener('mousedown', handleClickOutside);
+  
+      // Cleanup
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [showVendorDropdown, showTruckDropdown]);
+  
+  
+    useEffect(() => {
+      // Fetch vendors and truck numbers for dropdowns
+      fetchVendors();
+      fetchTruckNumbers();
+      fetchDestinationData();
+    }, []);
+  
+    const fetchVendors = async () => {
+      try {
+        const response = await axios.get('/api/vendors');
+        
+        setVendorsList(response.data.vendorData);
+        console.log(vendorsList);
+      } catch (error) {
+        console.error('Error fetching vendors:', error);
+        alert('Error fetching vendors')
+      }
+    };
+  
+    const fetchTruckNumbers = async () => {
+      try {
+        const response = await axios.get('/api/trucks');
+    
+        setTruckNumbersList(response.data.truckData);
+        console.log(truckNumbersList);
+  
+      } catch (error) {
+        if(error.response){
+          if(error.response.data.message){
+            alert(error.response.data.message);
+          }
+        }
+        console.error('Error fetching truck numbers:', error);
+        alert('Error fetching truck numbers')
+      }
+    };
+
+    const fetchDestinationData = async ()=>{
+      try {
+        const response = await axios.get('/api/destination');
+    
+        setDestinationList(response.data.destinationData);
+        console.log(destinationList);
+  
+      } catch (error) {
+        if(error.response){
+          if(error.response.data.message){
+            alert(error.response.data.message);
+          }
+        }
+        console.error('Error fetching destination data:', error);
+        alert('Error fetching destination data')
+      }    
+    }
+  
+    const filteredVendors = vendorsList.filter((vendor) =>
+      vendor.company_name.toLowerCase().startsWith(Vendor.toLowerCase())
+    )
+  
+    const filteredTrucks = truckNumbersList.filter((truck) =>
+      truck.truck_no.toLowerCase().startsWith(TruckNumber.toLowerCase())
+    );
+
+    const filteredDestinationFrom =destinationList.filter((destinationFrom) =>
+      destinationFrom.from.toLowerCase().startsWith(DestinationFrom.toLowerCase())
+
+    );
+
+    const filteredDestinationTo =destinationList.filter((destinationTo) =>
+      destinationTo.to.toLowerCase().startsWith(DestinationTo.toLowerCase())
+    );
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,7 +162,7 @@ const AddTruckDetails = () => {
     setToll('');
     setAdblue('');
     setGreasing('');
-    
+
 
     let sendData = {
       TruckNumber, DONumber,DriverName, Vendor, DestinationFrom, DestinationTo,
@@ -78,15 +192,40 @@ const AddTruckDetails = () => {
     >
 
       <form onSubmit={handleSubmit} className="add-truck-details-form">
-        <div className="form-group">
+        <div className="form-group da2">
           <label htmlFor="truckNumber">Truck Number:</label>
           <input
             type="text"
             id="truckNumber"
+            autocomplete="off"
             value={TruckNumber}
             onChange={(e) => setTruckNumber(e.target.value)}
+            onClick={() => setShowTruckDropdown(true)}
             required
           />
+          {showTruckDropdown && TruckNumber && (
+          <ul className="TVdropdown">
+            {filteredTrucks.map((truck) => (
+              <li
+                key={truck._id}
+                onClick={() => {
+                  setTruckNumber(truck.truck_no);
+                  setShowTruckDropdown(false);
+                }}
+                style={{
+                  padding: '5px',
+                  cursor: 'pointer',
+                  borderBottom: '1px solid #ddd',
+                }}
+              >
+                {truck.truck_no}
+              </li>
+            ))}
+            {filteredTrucks.length === 0 && (
+              <li style={{ padding: '5px' }}>No trucks found</li>
+            )}
+          </ul>
+        )}
         </div>
         <div className="form-group">
           <label htmlFor="doNumber">DO Number:</label>
@@ -99,15 +238,7 @@ const AddTruckDetails = () => {
             required
           />
         </div>
-        {/* <div className="form-group">
-            <label htmlFor="time">Select a time:</label>
-            <input 
-                type="time" 
-                id="time" 
-                value={time}
-                onChange={(e) => setTime(e.target.value)} 
-            />
-        </div> */}
+
         <div className="form-group">
           <label htmlFor="driverName">Driver Name:</label>
           <input
@@ -118,48 +249,110 @@ const AddTruckDetails = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className="form-group da1">
           <label htmlFor="vendors">Vendor:</label>
-          <select
+          <input
+            type="text"
             id="vendors"
+            autocomplete="off"
             value={Vendor}
             onChange={(e) => setVendor(e.target.value)}
+            onClick={() => setShowVendorDropdown(true)}
             required
-          >
-            <option value="">Select Vendor</option>
-            <option value="vendor1">Vendor 1</option>
-            <option value="vendor2">Vendor 2</option>
-            <option value="vendor3">Vendor 3</option>
-            
-          </select>
+          />
+          {showVendorDropdown && Vendor && (
+          <ul className="TVdropdown">
+            {filteredVendors.map((vendor) => (
+              <li
+                key={vendor._id }
+                onClick={() => {
+                  setVendor(vendor.company_name);
+                  setShowVendorDropdown(false);
+                }}
+                style={{
+                  padding: '5px',
+                  cursor: 'pointer',
+                  borderBottom: '1px solid #ddd',
+                }}
+              >
+                {vendor.company_name}
+              </li>
+            ))}
+            {filteredVendors.length === 0 && (
+              <li style={{ padding: '5px' }}>No vendors found</li>
+            )}
+          </ul>
+        )}
         </div>
-        <div className="form-group">
+        <div className="form-group da3">
           <label htmlFor="destinationFrom">Destination From:</label>
-          <select
+          <input
+            type="text"
             id="destinationFrom"
+            autocomplete="off"
             value={DestinationFrom}
             onChange={(e) => setDestinationFrom(e.target.value)}
+            onClick={() => setShowDestinationFromDropdown(true)}
             required
-          >
-            <option value="">Select Destination From</option>
-            <option value="destination1">Destination 1</option>
-            <option value="destination2">Destination 2</option>
-            <option value="destination3">Destination 3</option>
-          </select>
+          />
+          {showDestinationFromDropdown && DestinationFrom && (
+          <ul className="TVdropdown">
+            {filteredDestinationFrom.map((destinationfrom) => (
+              <li
+                key={destinationfrom._id }
+                onClick={() => {
+                  setDestinationFrom(destinationfrom.from);
+                  setShowDestinationFromDropdown(false);
+                }}
+                style={{
+                  padding: '5px',
+                  cursor: 'pointer',
+                  borderBottom: '1px solid #ddd',
+                }}
+              >
+                {destinationfrom.from}
+              </li>
+            ))}
+            {filteredDestinationFrom.length === 0 && (
+              <li style={{ padding: '5px' }}>No data found</li>
+            )}
+          </ul>
+        )}
         </div>
-        <div className="form-group">
+        <div className="form-group da4">
           <label htmlFor="destinationTo">Destination To:</label>
-          <select
+          <input
+            type="text"
             id="destinationTo"
+            autoComplete="off"
             value={DestinationTo}
             onChange={(e) => setDestinationTo(e.target.value)}
+            onClick={() => setShowDestinationToDropdown(true)}
             required
-          >
-            <option value="">Select Destination To</option>
-            <option value="destination1">Destination 1</option>
-            <option value="destination2">Destination 2</option>
-            <option value="destination3">Destination 3</option>
-          </select>
+          />
+            {showDestinationToDropdown && DestinationTo && (
+          <ul className="TVdropdown">
+            {filteredDestinationTo.map((destinationto) => (
+              <li
+                key={destinationto._id }
+                onClick={() => {
+                  setDestinationTo(destinationto.to);
+                  setShowDestinationToDropdown(false);
+                }}
+                style={{
+                  padding: '5px',
+                  cursor: 'pointer',
+                  borderBottom: '1px solid #ddd',
+                }}
+              >
+                {destinationto.to}
+              </li>
+            ))}
+            {filteredDestinationTo.length === 0 && (
+              <li style={{ padding: '5px' }}>No data found</li>
+            )}
+          </ul>
+        )}
         </div>
         <div className="form-group">
           <label htmlFor="truckType">Truck Type:</label>

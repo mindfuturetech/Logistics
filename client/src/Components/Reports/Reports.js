@@ -16,6 +16,7 @@ const Reports = () => {
     truckNumber: ''
   });
 
+  const [originalData, setOriginalData] = useState([]);
   const [vendors, setVendors] = useState([]);
   const [truckNumbers, setTruckNumbers] = useState([]);
   const [vendorQuery, setVendorQuery] = useState('');
@@ -166,6 +167,21 @@ const Reports = () => {
   };
 
   const handleSave = async (row) => {
+    
+    // const originalData = tableData.filter(data=>{
+    //   return data._id.startsWith(row._id);
+    // })
+
+    // if(originalData[0] === row){
+    //   alert('No changes made in the record');
+    //   setEditingRow(null);
+    //   setSelectedFiles({});
+    //   return;
+    // }
+
+    // console.log('originalData: ',originalData[0]);
+    // console.log('changedData: ',row);
+
     const formData = new FormData();
     formData.append('id', row._id);
     formData.append('transactionStatus', row.TransactionStatus);
@@ -180,6 +196,14 @@ const Reports = () => {
         formData.append(fieldName, selectedFiles[key]);
       }
     });
+
+    console.log('originalData: ',formData);
+    console.log('changedData: ',row);
+
+    if(row.TransactionStatus === formData.TransactionStatus && row.Weight === formData.Weight && row.ActualWeight === row.ActualWeight){
+      alert('No changes made in the record')
+      return;
+    }
 
     try {
       await axios.post(`/api/reports/${row._id}`, formData, {
@@ -209,9 +233,11 @@ const Reports = () => {
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
+
     const todayEnd = new Date(today);
     todayEnd.setHours(23, 59, 59, 999);
     
+
     const todayFilters = {
       startDate: today.toISOString(),
       endDate: todayEnd.toISOString(),
@@ -326,7 +352,6 @@ const Reports = () => {
             )}
           </ul>
         )}
-
             </div>
 
             <div className="filter-item d2">
@@ -342,7 +367,7 @@ const Reports = () => {
           
           }}
           onClick={() => setShowTruckDropdown(true)}
-          placeholder="Search Truck"
+         
         />
         {showTruckDropdown && truckQuery && (
           <ul className="dropdown">
@@ -416,7 +441,6 @@ const Reports = () => {
                   <th>Loading Advice</th>
                   <th>Invoice Company</th>
                   <th>Weightment Slip</th>
-                  {/* <th>% TDS</th> */}
                   <th>Action</th>
                 </tr>
               </thead>
@@ -473,23 +497,6 @@ const Reports = () => {
                       )}
                     </td>
                     <td>
-                      {/* {editingRow === row._id ? (
-                        <input 
-                          className='editInput'
-                          type="number"
-                          value={row.DifferenceInWeight}
-                          onChange={(e) => {
-                            const newData = tableData.map(item =>
-                              item._id === row._id
-                                ? { ...item, DifferenceInWeight: e.target.value }
-                                : item
-                            );
-                            setTableData(newData);
-                          }}
-                        />
-                      ) : (
-                        row.DifferenceInWeight
-                      )} */}
                       {row.DifferenceInWeight}
                     </td>
                     <td>{row.Freight}</td>
@@ -501,7 +508,6 @@ const Reports = () => {
                     <td>{row.Toll}</td>
                     <td>{row.Adblue}</td>
                     <td>{row.Greasing}</td>
-                    {/* <td>{row.PercentTDS}</td> */}
                     {['DieselSlipImage', 'LoadingAdvice', 'InvoiceCompany', 'WeightmentSlip'].map(field => (
                       <td key={field}>
                         {editingRow === row._id ? (

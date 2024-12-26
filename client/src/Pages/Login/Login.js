@@ -99,13 +99,13 @@ const Login = ()=>{
             <p>Don't have an account yet?{' '}
                 <span
                     onClick={()=>navigate('/signup')}
-                    style={{cursor:'pointer', color:'blue', textDecoration:'underline'}}
+                    style={{cursor:'pointer', color:'blue'}}
                 >Signup</span>    
             </p>
             <p className='Reset-text'>
                 <span 
                     onClick={() => setShowResetModal(true)}
-                    style={{cursor:'pointer', color:'blue', textDecoration:'underline'}}
+                    style={{cursor:'pointer', color:'blue'}}
                 >Reset Password</span>
             </p>
 

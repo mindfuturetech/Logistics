@@ -4,7 +4,7 @@ const path= require('path');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
 
-        const folderMap = {
+        const folderMap = {     
             DieselSlipImage: path.join(__dirname, '..', 'uploadData', 'DieselSlipImage'),
             LoadingAdvice: path.join(__dirname, '..', 'uploadData', 'LoadingAdvice'),
             InvoiceCompany: path.join(__dirname, '..', 'uploadData', 'InvoiceCompany'),
@@ -25,7 +25,7 @@ const storage = multer.diskStorage({
 });
 
 // Multer upload middleware
-const upload = multer({ 
+const imageUpload = multer({ 
     storage: storage,
 }).fields([
     { name: 'DieselSlipImage', maxCount: 1 },
@@ -34,4 +34,4 @@ const upload = multer({
     { name: 'WeightmentSlip', maxCount: 1 },
 ]);
 
-module.exports = upload;
+module.exports = imageUpload;
