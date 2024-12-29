@@ -105,6 +105,16 @@ const getTableData = async (req, res) => {
 
   const updateTripData = async(req,res)=>{
     const {id, transactionStatus, weight, actualWeight} = req.body;
+    // console.log('id:', id);
+    // console.log('transactionStatus:', transactionStatus);
+    // console.log('weight:', weight);
+    // console.log('actualWeight:', actualWeight);
+    // console.log('actualWeight:', actualWeight);
+
+    // if(!id && !transactionStatus && !weight && !actualWeight && !req.files){
+      
+    //   return res.status(400).json({message:'No changes made in the record'});
+    // }
     console.log("Received update request with body:", req.body);
     console.log("Received files:", req.files);
 
@@ -150,9 +160,12 @@ const getTableData = async (req, res) => {
   
       // Save the updated truck details
       await data.save();
+      console.log('Updated data: ', data);
       res.status(200).json({ message: 'Trip details updated successfully'});
     
     }catch(error){
+      console.log(error);
+      console.log(error.message);
         res.status(500).json({ message: 'Server error while updating trip details' });
     }
   }

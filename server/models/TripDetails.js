@@ -40,17 +40,13 @@ const tripDetailsSchema = new mongoose.Schema({
         type:Number,
         required:true
     },
-    Freight:{
-        type:Number,
-        required:true
-    },
     ActualWeight:{
         type:Number,
-        default:null
+        default:0
     },
     DifferenceInWeight:{
         type:Number,
-        default:null
+        default:0
     },
     Freight:{
         type:Number,
@@ -90,7 +86,7 @@ const tripDetailsSchema = new mongoose.Schema({
     },
     BillId:{
         type:Number,
-        default:null
+        default:0
     },
     DieselSlipImage:{
         filepath:{type:String,default:null},

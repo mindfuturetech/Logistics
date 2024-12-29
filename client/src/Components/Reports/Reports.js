@@ -16,7 +16,6 @@ const Reports = () => {
     truckNumber: ''
   });
 
-  const [originalData, setOriginalData] = useState([]);
   const [vendors, setVendors] = useState([]);
   const [truckNumbers, setTruckNumbers] = useState([]);
   const [vendorQuery, setVendorQuery] = useState('');
@@ -168,20 +167,6 @@ const Reports = () => {
 
   const handleSave = async (row) => {
     
-    // const originalData = tableData.filter(data=>{
-    //   return data._id.startsWith(row._id);
-    // })
-
-    // if(originalData[0] === row){
-    //   alert('No changes made in the record');
-    //   setEditingRow(null);
-    //   setSelectedFiles({});
-    //   return;
-    // }
-
-    // console.log('originalData: ',originalData[0]);
-    // console.log('changedData: ',row);
-
     const formData = new FormData();
     formData.append('id', row._id);
     formData.append('transactionStatus', row.TransactionStatus);
@@ -196,14 +181,6 @@ const Reports = () => {
         formData.append(fieldName, selectedFiles[key]);
       }
     });
-
-    console.log('originalData: ',formData);
-    console.log('changedData: ',row);
-
-    if(row.TransactionStatus === formData.TransactionStatus && row.Weight === formData.Weight && row.ActualWeight === row.ActualWeight){
-      alert('No changes made in the record')
-      return;
-    }
 
     try {
       await axios.post(`/api/reports/${row._id}`, formData, {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FiUploadCloud } from 'react-icons/fi';
 import './AddTruckDetails.css';
 import '../../Pages/HomePage/HomePage.css'
@@ -36,7 +36,19 @@ const AddTruckDetails = () => {
     const [showDestinationFromDropdown, setShowDestinationFromDropdown] = useState(false);
     const [showDestinationToDropdown, setShowDestinationToDropdown] = useState(false);
 
+     const[Rate,setRate] = useState([]);
 
+    const inputRef1 = useRef(null);
+    const inputRef2= useRef(null);
+    const inputRef3 = useRef(null);
+
+      
+    useEffect(() => {
+      // Fetch vendors and truck numbers for dropdowns
+      fetchVendors();
+      fetchTruckNumbers();
+      fetchDestinationData();
+    }, []);
     
     useEffect(() => {
       const handleClickOutside = (event) => {
@@ -65,16 +77,79 @@ const AddTruckDetails = () => {
       return () => {
         document.removeEventListener('mousedown', handleClickOutside);
       };
-    }, [showVendorDropdown, showTruckDropdown]);
-  
-  
+    }, [showVendorDropdown, showTruckDropdown, showDestinationFromDropdown, showDestinationToDropdown]);
+
+
     useEffect(() => {
-      // Fetch vendors and truck numbers for dropdowns
-      fetchVendors();
-      fetchTruckNumbers();
-      fetchDestinationData();
-    }, []);
+      const calculateRate = async () => {
+            const validFrom = destinationList.some(dest => 
+              dest.from.toLowerCase() === DestinationFrom.toLowerCase()
+            );
+            const validTo = destinationList.some(dest => 
+              dest.to.toLowerCase() === DestinationTo.toLowerCase()
+            );
   
+
+            if (validFrom && validTo) {
+              const matchingRoutes = destinationList.filter(destination => 
+                destination.from.toLowerCase() === DestinationFrom.toLowerCase() &&
+                destination.to.toLowerCase() === DestinationTo.toLowerCase()
+              );
+  
+              if (matchingRoutes.length > 0) {
+                setRate(matchingRoutes);
+                if (Weight) {
+                  setFreight(matchingRoutes[0].rate * Weight);
+                }
+              } else {
+
+                setRate([]);
+                setFreight(0);
+              }
+            } else {
+
+              setRate([]);
+              setFreight(0);
+            }
+      };
+      
+      calculateRate();
+    }, [DestinationFrom, DestinationTo, Weight]);
+  
+
+    useEffect(()=>{
+      const getTDS = async()=>{
+        if(Vendor){
+
+          // const isVendorNotFocused = inputRef3.current && document.activeElement !== inputRef3.current;
+          // const isVendorFocused = inputRef3.current && document.activeElement === inputRef3.current;
+          
+          console.log('Vendor:', Vendor);
+
+          const currentVendor = vendorsList.some((vendor) =>
+            vendor.company_name.toLowerCase() === Vendor.toLowerCase()
+          )   
+
+          if(currentVendor){
+               const getVendor = vendorsList.filter((vendor) =>
+                 vendor.company_name.toLowerCase()=== Vendor.toLowerCase()
+               )
+         
+           if(getVendor.length>0){
+              const TDS_Value = getVendor[0].tds_rate
+              setTDS_Rate(TDS_Value);
+            }
+          }
+        else{setTDS_Rate(0)};
+
+        }
+      }
+
+      getTDS();
+
+
+    },[Vendor])
+
     const fetchVendors = async () => {
       try {
         const response = await axios.get('/api/vendors');
@@ -83,7 +158,6 @@ const AddTruckDetails = () => {
         console.log(vendorsList);
       } catch (error) {
         console.error('Error fetching vendors:', error);
-        alert('Error fetching vendors')
       }
     };
   
@@ -95,13 +169,7 @@ const AddTruckDetails = () => {
         console.log(truckNumbersList);
   
       } catch (error) {
-        if(error.response){
-          if(error.response.data.message){
-            alert(error.response.data.message);
-          }
-        }
         console.error('Error fetching truck numbers:', error);
-        alert('Error fetching truck numbers')
       }
     };
 
@@ -113,13 +181,7 @@ const AddTruckDetails = () => {
         console.log(destinationList);
   
       } catch (error) {
-        if(error.response){
-          if(error.response.data.message){
-            alert(error.response.data.message);
-          }
-        }
         console.error('Error fetching destination data:', error);
-        alert('Error fetching destination data')
       }    
     }
   
@@ -142,6 +204,44 @@ const AddTruckDetails = () => {
   
 
   const handleSubmit = async (e) => {
+
+    const validTruckNumber = truckNumbersList.some((truckNumber)=>
+      truckNumber.truck_no.toLowerCase() === TruckNumber.toLowerCase()
+    )
+
+    if(!validTruckNumber){
+      alert('Please enter valid truck number');
+      return;
+    }
+
+    const validVendor = vendorsList.some((vendor) =>
+      vendor.company_name.toLowerCase() === Vendor.toLowerCase()
+    )   
+
+    if(!validVendor || !TDS_Rate || TDS_Rate===0){
+      alert('Please enter valid vendor');
+      return;
+    }
+
+    const validFrom = destinationList.some(dest => 
+      dest.from.toLowerCase() === DestinationFrom.toLowerCase()
+    );
+    const validTo = destinationList.some(dest => 
+      dest.to.toLowerCase() === DestinationTo.toLowerCase()
+    );
+
+    if(!validFrom || !validTo || !Freight || Freight===0){
+      alert('Please enter valid destinations');
+      return;
+    }
+
+    if(!TruckNumber || !DONumber || !DriverName || !Vendor || !DestinationFrom || !DestinationTo || !TruckType || !TransactionStatus || !Weight || !Freight
+      || !Diesel || !DieselAmount || !DieselSlipNumber || !TDS_Rate || !Advance || !Toll || !Adblue || !Greasing){
+        alert('Please fill all the fields before submitting');
+        return;
+      }
+    
+
     e.preventDefault();
     // Handle form submission logic here
     setTruckNumber('');
@@ -238,7 +338,6 @@ const AddTruckDetails = () => {
             required
           />
         </div>
-
         <div className="form-group">
           <label htmlFor="driverName">Driver Name:</label>
           <input
@@ -252,6 +351,7 @@ const AddTruckDetails = () => {
         <div className="form-group da1">
           <label htmlFor="vendors">Vendor:</label>
           <input
+            ref={inputRef3}
             type="text"
             id="vendors"
             autocomplete="off"
@@ -287,6 +387,7 @@ const AddTruckDetails = () => {
         <div className="form-group da3">
           <label htmlFor="destinationFrom">Destination From:</label>
           <input
+            ref={inputRef1}
             type="text"
             id="destinationFrom"
             autocomplete="off"
@@ -322,6 +423,8 @@ const AddTruckDetails = () => {
         <div className="form-group da4">
           <label htmlFor="destinationTo">Destination To:</label>
           <input
+            ref={inputRef2}
+            className="DestinationToClass"
             type="text"
             id="destinationTo"
             autoComplete="off"
@@ -387,7 +490,9 @@ const AddTruckDetails = () => {
             step="any"
             id="Weight"
             value={Weight}
-            onChange={(e) => setWeight(e.target.value)}
+            onChange={(e) => {
+              setWeight(e.target.value)
+            }}
             required
           />
         </div>
@@ -398,9 +503,8 @@ const AddTruckDetails = () => {
             step="any"
             id="Freight"
             value={Freight}
-            onChange={(e) => setFreight(e.target.value)}
-            required
-          />
+            disabled
+          />  
         </div>
         <div className="form-group">
           <label htmlFor="Diesel">Diesel (Ltr):</label>
@@ -442,7 +546,7 @@ const AddTruckDetails = () => {
             id="TDS_Rate"
             value={TDS_Rate}
             onChange={(e) => setTDS_Rate(e.target.value)}
-            required
+            disabled
           />
         </div>
         <div className="form-group">
