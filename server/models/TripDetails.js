@@ -65,18 +65,6 @@ const tripDetailsSchema = new mongoose.Schema({
         required:true
     },
     TDS_Rate:{
-        type:Number,
-        required:true
-    },
-    Advance:{
-        type:Number,
-        required:true
-    },
-    Toll:{
-        type:Number,
-        required:true 
-    },
-    TDS:{
         type: Number,
         required: true,
         validate: {
@@ -85,6 +73,14 @@ const tripDetailsSchema = new mongoose.Schema({
             },
             message: "Value must be a positive number",
         },
+    },
+    Advance:{
+        type:Number,
+        required:true
+    },
+    Toll:{
+        type:Number,
+        required:true 
     },
     Adblue:{
         type:Number,

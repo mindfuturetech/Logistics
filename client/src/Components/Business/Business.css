@@ -1,11 +1,11 @@
-/* .reports{
+/* .business{
     display: flex;
     justify-content: center;
     align-items: center;
 } */
 
 
-.reports-container {
+ .business-container {
     position: absolute;
     top: 9%;
     left: 5%;
@@ -16,15 +16,15 @@
     overflow-y: auto;
   }
 
-input:focus,
-input:focus,
-select:focus {
+.business-container input:focus,
+.business-container, input:focus,
+.business-container,select:focus {
   outline: none;
   border-color: #4caf50;
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
   
-  .filter-box {
+.business-container .filter-box {
     background: white;
     padding: 2rem;
     border-radius: 8px;
@@ -32,21 +32,21 @@ select:focus {
     margin-bottom: 2rem;
   }
   
-  .filters-grid {
+  .business-container .filters-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
     margin-bottom: 1.5rem;
   }
   
-  .filter-item {
+  .business-container .filter-item {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     position: relative;
   }
 
-  .dropdown {
+  .business-container .dropdown {
   position: absolute;
   top: 100%; /* Position right below the input */
   left: 0;
@@ -64,36 +64,36 @@ select:focus {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.dropdown li {
+.business-container .dropdown li {
   padding: 8px 12px;
   cursor: pointer;
   border-bottom: 1px solid #ddd;
 }
 
-.dropdown li:hover {
+.business-container .dropdown li:hover {
   background-color: #f5f5f5;
 }
 
-.dropdown li:last-child {
+.business-container .dropdown li:last-child {
   border-bottom: none;
 }
 
 
   
-  .filter-item label {
+.business-container .filter-item label {
     font-weight: 500;
     color: #333;
   }
   
-  .filter-item input,
-  .filter-item select {
+  .business-container .filter-item input,
+  .business-container .filter-item select {
     padding: 0.75rem;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 0.9rem;
   }
 
-  .editInput{
+  .business-container .editInput{
     padding: 0.75rem;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -101,15 +101,15 @@ select:focus {
     width: 7rem;
   }
   
-  .button-group {
+  .business-container .button-group {
     display: flex;
     gap: 1rem;
     justify-content: flex-start;
   }
   
-  .submit-btn,
-  .download-btn,
-  .today-list-btn {
+  .business-container .submit-btn,
+  .business-container .download-btn,
+  .business-container .today-list-btn {
     padding: 0.75rem 1.5rem;
     border: none;
     border-radius: 4px;
@@ -118,60 +118,60 @@ select:focus {
     transition: all 0.3s ease;
   }
   
-  .submit-btn,
-  .today-list-btn {
+  .business-container .submit-btn,
+  .business-container .today-list-btn {
     background-color: #2196f3;
     color: white;
   }
   
-  .download-btn {
+  .business-container .download-btn {
     background-color: #4caf50;
     color: white;
   }
   
-  .submit-btn:hover,
-  .download-btn:hover,
-  .today-list-btn {
+  .business-container .submit-btn:hover,
+  .business-container .download-btn:hover,
+  .business-container .today-list-btn {
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
   
-  .table-box {
+  .business-container .table-box {
     background: white;
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  .table-responsive {
+  .business-container .table-responsive {
     overflow-x: auto;
   }
   
-  table {
+  .business-container table {
     width: 100%;
     border-collapse: collapse;
     white-space: nowrap;
   }
   
-  th, td {
+  .business-container th, .business-container td {
     text-align: center !important;;
     padding: 1rem;
     text-align: left;
     border-bottom: 1px solid #ddd;
   }
   
-  th {
+  .business-container th {
     background-color: #f5f5f5;
     font-weight: 600;
     color: #333;
   }
   
-  tr:hover {
+  .business-container tr:hover {
     background-color: #f8f9fa;
   }
   
-  .edit-btn,
-  .save-btn {
+  .business-container .edit-btn,
+  .business-container .save-btn {
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 4px;
@@ -179,7 +179,7 @@ select:focus {
     transition: all 0.3s ease;
   }
 
-  .download-link-btn {
+  .business-container .download-link-btn {
     background-color: #4CAF50;
     color: white;
     padding: 6px 12px;
@@ -194,70 +194,71 @@ select:focus {
     text-overflow: ellipsis;
   }
   
-  .download-link-btn:hover {
+  .business-container .download-link-btn:hover {
     background-color: #45a049;
   }
   
-  .download-link-btn:active {
+  .business-container .download-link-btn:active {
     background-color: #3d8b40;
   }
   
-  .download-link-btn:disabled {
+  .business-container .download-link-btn:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
   }
   
-  .edit-btn {
+  .business-container .edit-btn {
     background-color: #2196f3;
     color: white;
   }
   
-  .save-btn {
+  .business-container .save-btn {
     background-color: #4caf50;
     color: white;
   }
   
-  .edit-btn:hover,
-  .save-btn:hover {
+  .business-container .edit-btn:hover,
+  .business-container .save-btn:hover {
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
   
-  input[type="file"] {
+  .business-container input[type="file"] {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 4px;
   }
 
-  #grandTotal{
+  .business-container #grandTotal{
     font-weight: bolder;
   }
-  tfoot {
+
+  .business-container tfoot {
     background-color: #f5f5f5;
     font-weight: bold;
   }
 
-  tfoot td {
+  .business-container tfoot td {
     border-top: 2px solid #ddd;
   }
 
   @media (max-width: 768px) {
-    .reports-container {
+    .business-container {
       left: 9%;
       width: 91%;
       padding: 1rem;
     }
   
-    .filters-grid {
+    .business-container .filters-grid {
       grid-template-columns: 1fr;
     }
   
-    .button-group {
+    .business-container .button-group {
       flex-direction: column;
     }
   
-    th, td {
+    .business-container th, .business-container td {
       padding: 0.75rem;
       font-size: 0.9rem;
       text-align: center;

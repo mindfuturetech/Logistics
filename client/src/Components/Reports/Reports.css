@@ -15,15 +15,15 @@
     overflow-y: auto;
   }
 
-input:focus,
-input:focus,
-select:focus {
+  .reports-container input:focus,
+  .reports-container input:focus,
+  .reports-container select:focus {
   outline: none;
   border-color: #4caf50;
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
   
-  .filter-box {
+.reports-container .filter-box {
     background: white;
     padding: 2rem;
     border-radius: 8px;
@@ -31,21 +31,21 @@ select:focus {
     margin-bottom: 2rem;
   }
   
-  .filters-grid {
+  .reports-container .filters-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
     margin-bottom: 1.5rem;
   }
   
-  .filter-item {
+  .reports-container .filter-item {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     position: relative;
   }
 
-  .dropdown {
+  .reports-container .dropdown {
   position: absolute;
   top: 100%; /* Position right below the input */
   left: 0;
@@ -63,36 +63,36 @@ select:focus {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.dropdown li {
+.reports-container .dropdown li {
   padding: 8px 12px;
   cursor: pointer;
   border-bottom: 1px solid #ddd;
 }
 
-.dropdown li:hover {
+.reports-container .dropdown li:hover {
   background-color: #f5f5f5;
 }
 
-.dropdown li:last-child {
+.reports-container .dropdown li:last-child {
   border-bottom: none;
 }
 
 
   
-  .filter-item label {
+.reports-container .filter-item label {
     font-weight: 500;
     color: #333;
   }
   
-  .filter-item input,
-  .filter-item select {
+  .reports-container .filter-item input,
+  .reports-container .filter-item select {
     padding: 0.75rem;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 0.9rem;
   }
 
-  .editInput{
+  .reports-container .editInput{
     padding: 0.75rem;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -100,15 +100,15 @@ select:focus {
     width: 7rem;
   }
   
-  .button-group {
+  .reports-container .button-group {
     display: flex;
     gap: 1rem;
     justify-content: flex-start;
   }
   
-  .submit-btn,
-  .download-btn,
-  .today-list-btn {
+  .reports-container .submit-btn,
+  .reports-container .download-btn,
+  .reports-container .today-list-btn {
     padding: 0.75rem 1.5rem;
     border: none;
     border-radius: 4px;
@@ -117,60 +117,60 @@ select:focus {
     transition: all 0.3s ease;
   }
   
-  .submit-btn,
-  .today-list-btn {
+  .reports-container .submit-btn,
+  .reports-container .today-list-btn {
     background-color: #2196f3;
     color: white;
   }
   
-  .download-btn {
+  .reports-container .download-btn {
     background-color: #4caf50;
     color: white;
   }
   
-  .submit-btn:hover,
-  .download-btn:hover,
-  .today-list-btn {
+  .reports-container .submit-btn:hover,
+  .reports-container .download-btn:hover,
+  .reports-container .today-list-btn {
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
   
-  .table-box {
+  .reports-container .table-box {
     background: white;
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  .table-responsive {
+  .reports-container .table-responsive {
     overflow-x: auto;
   }
   
-  table {
+  .reports-container table {
     width: 100%;
     border-collapse: collapse;
     white-space: nowrap;
   }
   
-  th, td {
+  .reports-container th, .reports-container td {
     text-align: center !important;;
     padding: 1rem;
     text-align: left;
     border-bottom: 1px solid #ddd;
   }
   
-  th {
+  .reports-container th {
     background-color: #f5f5f5;
     font-weight: 600;
     color: #333;
   }
   
-  tr:hover {
+  .reports-container tr:hover {
     background-color: #f8f9fa;
   }
   
-  .edit-btn,
-  .save-btn {
+  .reports-container .edit-btn,
+  .reports-container .save-btn {
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 4px;
@@ -178,7 +178,7 @@ select:focus {
     transition: all 0.3s ease;
   }
 
-  .download-link-btn {
+  .reports-container .download-link-btn {
     background-color: #4CAF50;
     color: white;
     padding: 6px 12px;
@@ -193,36 +193,36 @@ select:focus {
     text-overflow: ellipsis;
   }
   
-  .download-link-btn:hover {
+  .reports-container .download-link-btn:hover {
     background-color: #45a049;
   }
   
-  .download-link-btn:active {
+  .reports-container .download-link-btn:active {
     background-color: #3d8b40;
   }
   
-  .download-link-btn:disabled {
+  .reports-container .download-link-btn:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
   }
   
-  .edit-btn {
+  .reports-container .edit-btn {
     background-color: #2196f3;
     color: white;
   }
   
-  .save-btn {
+  .reports-container .save-btn {
     background-color: #4caf50;
     color: white;
   }
   
-  .edit-btn:hover,
-  .save-btn:hover {
+  .reports-container .edit-btn:hover,
+  .reports-container .save-btn:hover {
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
   
-  input[type="file"] {
+  .reports-container input[type="file"] {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ddd;
@@ -236,15 +236,15 @@ select:focus {
       padding: 1rem;
     }
   
-    .filters-grid {
+    .reports-container .filters-grid {
       grid-template-columns: 1fr;
     }
   
-    .button-group {
+    .reports-container .button-group {
       flex-direction: column;
     }
   
-    th, td {
+    .reports-container th, .reports-container td {
       padding: 0.75rem;
       font-size: 0.9rem;
       text-align: center;

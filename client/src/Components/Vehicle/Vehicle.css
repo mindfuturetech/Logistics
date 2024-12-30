@@ -163,7 +163,7 @@ h1 {
     align-self: center;
     gap: 20px;
     padding: 20px;
-    background-color:  #f5f5f5;
+    background-color: #ffffff;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     width: 95%;
@@ -293,5 +293,77 @@ h1 {
     .field-table th, .field-table td {
         font-size: 12px;
         padding: 8px;
+    }
+}
+
+
+
+@media (max-width: 992px) {
+    #vehicle .form-section,
+    #vehicle .tiles-view {
+        width: 98%;
+    }
+
+    #vehicle .tile {
+        width: calc(100% - 40px);
+    }
+
+    #vehicle .field-table td {
+        padding: 10px;
+    }
+
+    #vehicle .form-section input[type="date"],
+    #vehicle .form-section input[type="file"] {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    #vehicle {
+        left: 9%;
+        width: 91%;
+        padding: 10px;
+    }
+
+    #vehicle .form-section,
+    #vehicle .tiles-view {
+        width: 98%;
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    #vehicle .field-table td {
+        padding: 8px;
+    }
+
+    #vehicle .field-table label {
+        font-size: 12px;
+    }
+
+    #vehicle .form-section input[type="date"],
+    #vehicle .form-section input[type="file"] {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    #vehicle .tile {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    #vehicle .tile-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    #vehicle input[type="text"],
+    #vehicle input[type="number"] {
+        max-width: 100%;
+    }
+
+    #vehicle .submit-button {
+        width: 100%;
+        margin: 20px auto;
     }
 }

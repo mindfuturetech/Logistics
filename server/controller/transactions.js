@@ -39,8 +39,8 @@ async function ListAllTransactions(req, res) {
             // let Dest_To = truck.DestinationTo
 
             return {
-                date: truck.Date,
-                time: truck.Date,
+                date: truck.createdAt,
+                time: truck.createdAt,
                 vendor: truck.Vendor,
                 truck_no: truck.TruckNumber,
                 destination_to: truck.DestinationTo,

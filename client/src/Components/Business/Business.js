@@ -193,7 +193,7 @@ const Business = () => {
   };
 
   return (
-    <div className="reports-container">
+    <div className="business-container">
       <div className="filter-box">
         <form onSubmit={handleSubmit}>
           <div className="filters-grid">
