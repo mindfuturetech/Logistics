@@ -10,7 +10,8 @@ import Reports from '../../Components/Reports/Reports';
 import Freight from '../../Components/Freight/Freight';
 import Vehicle from '../../Components/Vehicle/Vehicle';
 import Vendor from '../../Components/Vendor/Vendor';
-import Transactions from '../../Components/Transactions/Transactions'
+import Transactions from '../../Components/Transactions/Transactions';
+import GenerateBill from '../../Components/GenerateBill/GenerateBill';
 
 
 axios.defaults.baseURL = 'http://localhost:5000/logistics';
@@ -41,6 +42,9 @@ const HomePage = () => {
         break;
       case '/transactions':
         setCurrentComponent(<Transactions />);
+        break;
+      case '/generate-bill':
+        setCurrentComponent(<GenerateBill />);
         break;
       default:
         setCurrentComponent(null); // Handle any other routes if necessary

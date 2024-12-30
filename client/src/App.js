@@ -12,9 +12,6 @@ import SignUp from './Pages/SignUp/SignUp';
 import Login from './Pages/Login/Login';
 import HomePage from './Pages/HomePage/HomePage';
 import Loading from './Components/Loading/Loading';
-import Freight from "./Components/Freight/Freight";
-import Vehicle from "./Components/Vehicle/Vehicle";
-import Vendor from "./Components/Vendor/Vendor";
 
 function App() {
 
@@ -62,6 +59,10 @@ function App() {
           />
           <Route 
             path='/transactions' 
+            element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} 
+          />
+          <Route 
+            path='/generate-bill' 
             element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} 
           />
         </Routes>

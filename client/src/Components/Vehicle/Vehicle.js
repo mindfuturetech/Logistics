@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
+import { FaDownload, FaUpload } from "react-icons/fa";
 import axios from "axios";
 import "./Vehicle.css";
 
@@ -10,7 +11,7 @@ const Vehicle = () => {
     // const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        truckNo: "",
+        truck_no: "",
         make: "",
         companyOwner: "",
         fields: [
@@ -45,8 +46,8 @@ const Vehicle = () => {
     const fetchData = async () => {
         try {
             const response = await axios.get(getVehicleDataUrl);
-            console.log("response:::>", response.data);
-            setResult(response.data || []);
+            console.log("response:::>", response.data.resultData);
+            setResult(response.data.resultData || []);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
@@ -67,7 +68,7 @@ const Vehicle = () => {
         e.preventDefault();
 
         const formDataToSend = new FormData();
-        formDataToSend.append("truckNo", formData.truckNo);
+        formDataToSend.append("truck_no", formData.truck_no);
         formDataToSend.append("make", formData.make);
         formDataToSend.append("companyOwner", formData.companyOwner);
 
@@ -87,7 +88,7 @@ const Vehicle = () => {
             setSubmitMessage("Data submitted successfully!");
 
             setFormData({
-                truckNo: "",
+                truck_no: "",
                 make: "",
                 companyOwner: "",
                 fields: [
@@ -113,12 +114,12 @@ const Vehicle = () => {
             {/* <h1>Vehicle Master</h1> */}
             <form className="form-section" onSubmit={handleFormSubmit}>
                 <div className="form-left">
-                    <label htmlFor="truckNo">Truck No:</label>
+                    <label htmlFor="truck_no">Truck No:</label>
                     <input
                         type="text"
-                        id="truckNo"
-                        name="truckNo"
-                        value={formData.truckNo}
+                        id="truck_no"
+                        name="truck_no"
+                        value={formData.truck_no}
                         onChange={handleInputChange}
                         required
                     />
@@ -196,7 +197,7 @@ const Vehicle = () => {
                 {result.map((vehicle, index) => (
                     <div className="tile" key={index}>
                         <div className="tile-header">
-                            <h2>{vehicle.truckNo}</h2>
+                            <h2>{vehicle.truck_no}</h2>
                             <b>{vehicle.make}</b>
                             <i>{vehicle.companyOwner}</i>
                         </div>
@@ -212,16 +213,26 @@ const Vehicle = () => {
                                     <div className="tile-row" key={key}>
                                         <div className="tile-cell">{keyDisplayMap[key] || key}</div>
                                         <div className={`tile-cell ${doc.days_left <= 5 ? "highlighted" : ""}`}>
-                                            {doc.end_date} ({doc.days_left} days left)
+                                            {doc.end_date} ({doc.days_left <= 0 ? 0 : doc.days_left} days left)
                                         </div>
                                         <div className="tile-cell">
+                                        {
+                                            doc.days_left <= 0 ?
                                             <a
-                                                href={`http://localhost:5000/logistics/download/${vehicle.truckNo}/${key}/${doc.file_path.split("\\").pop().split("-")[1]}`}
-                                                className="download-button"
+                                                href={`http://localhost:5000/logistics/download/${vehicle.truck_no}/${key}/${doc.file_path.split("\\").pop().split("-")[1]}`}
+                                                className="upload-button"
                                                 download
                                             >
-                                                Download
+                                            <FaUpload className="vehicle_icons" />    
+                                            </a> 
+                                            : 
+                                            <a
+                                            href="your-upload-url"
+                                                className="download-button"
+                                            >
+                                            <FaDownload className="vehicle_icons" />
                                             </a>
+                                            } 
                                         </div>
                                     </div>
                                 )

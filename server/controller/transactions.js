@@ -1,4 +1,4 @@
-const TruckDetailsModel = require('../models/TruckDetails');
+const TripDetailsModel = require('../models/TripDetails');
 
 async function ListAllTransactions(req, res) {
     try {
@@ -15,16 +15,16 @@ async function ListAllTransactions(req, res) {
 
         let fetchedList = [];
         if (!start && !end) {
-            fetchedList = await TruckDetailsModel.find({
-                TransactionStatus: "Acknowledged"
-            });
+            fetchedList = await TripDetailsModel.find({
+                TransactionStatus: "Billed"
+            }).sort({createdAt: -1});
         } else {
-            fetchedList = await TruckDetailsModel.find({
+            fetchedList = await TripDetailsModel.find({
                 Date: { $gte: start, $lte: end },
-                TransactionStatus: "Acknowledged",
-            });
+                TransactionStatus: "Billed"
+            }).sort({createdAt: -1});
         }
-        console.log("fetchedList::>>>", fetchedList);
+        // console.log("fetchedList::>>>", fetchedList);
         
         if (!fetchedList || fetchedList.length === 0) {
             return res.status(404).json({ message: "No data found." });

@@ -20,7 +20,7 @@ async function ListVendor(req, res) {
             result = {};
         }
         console.log("resultData::>", resultData);
-        res.status(200).json(resultData);
+        return res.status(200).json({resultData});
     } catch (err) {
         console.error("Error fetching documents:", err);
         res.status(500).send(err);

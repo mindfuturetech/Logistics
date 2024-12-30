@@ -11,7 +11,7 @@ async function ListVehicle(req, res) {
         }
 
         const resultData = fetchedList.map(vehicle => ({
-            truckNo: vehicle.truck_no,
+            truck_no: vehicle.truck_no,
             make: vehicle.make,
             companyOwner: vehicle.company_owner,
             documents: Object.fromEntries(
@@ -22,7 +22,7 @@ async function ListVehicle(req, res) {
             ),
         }));
         console.log("resultData::-->", resultData);
-        res.status(200).json(resultData);
+        return res.status(200).json({resultData});
     } catch (error) {
         console.error("Error fetching vehicle documents:", error);
         res.status(500).send(error);
@@ -70,10 +70,10 @@ function calculateDaysLeft(endDate) {
 async function AddVehicle(req, res) {
     console.log("Files:", req.files);
     console.log("Body:", req.body);
-    const { truckNo, make, companyOwner } = req.body;
+    const { truck_no, make, companyOwner } = req.body;
 
-    if (!truckNo || !make || !companyOwner) {
-        return res.status(400).send("Missing required fields: truckNo, make, companyOwner");
+    if (!truck_no || !make || !companyOwner) {
+        return res.status(400).send("Missing required fields: truck_no, make, companyOwner");
     }
     console.log("Files received:", req.files);
     try {
@@ -94,7 +94,7 @@ async function AddVehicle(req, res) {
         const permitPath = req.files.basic_and_KA_permit ? req.files.basic_and_KA_permit[0].path : null;
         const basic_and_KA_permit_startDate = req.body.basic_and_KA_permit_startDate || ""; const basic_and_KA_permit_endDate = req.body.basic_and_KA_permit_endDate || "";
         const vehicle = new VehicleModel({
-            truck_no: truckNo,
+            truck_no: truck_no,
             make: make,
             company_owner: companyOwner,
             documents: {
@@ -148,9 +148,9 @@ async function AddVehicle(req, res) {
 }
 
 async function DownloadFile(req, res) {
-    const { truckNo, fieldName, fileName } = req.params;
+    const { truck_no, fieldName, fileName } = req.params;
 
-    const decodedTruckNo = decodeURIComponent(truckNo);
+    const decodedTruckNo = decodeURIComponent(truck_no);
     const decodedFileName = decodeURIComponent(fileName);
 
     // Construct file path

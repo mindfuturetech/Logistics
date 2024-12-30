@@ -11,6 +11,7 @@ const freightController = require('./controller/freight');
 const vehicleController = require('./controller/vehicle');
 const vendorController = require('./controller/vendor');
 const transactionsController = require('./controller/transactions');
+const generateBillController = require('./controller/generateBill')
 
 const multer = require("multer");
 const fs = require("fs");
@@ -68,5 +69,9 @@ router.post("/add-vendor", vendorController.AddVendor);
 
 // transactions
 router.post("/list-all-transactions", transactionsController.ListAllTransactions)
+
+// billing
+router.post("/list-billing", generateBillController.ListBill)
+router.post("/generate-pdf-bill", generateBillController.GeneratePDFBill)
 
 module.exports = router;

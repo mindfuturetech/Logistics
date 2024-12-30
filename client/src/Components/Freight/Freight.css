@@ -1,11 +1,5 @@
 #freight {
-    /* font-family: Arial, sans-serif;
-    margin: 10px 20px;
-    display: flex;
-    justify-self: center;
-    align-items: start;
-    flex-direction: column;
-    width: 100%; */
+    /* width: 100%; */
     /* padding: 2rem; */
     background-color: #ffffff;
     /* border-radius: 8px; */
@@ -15,19 +9,18 @@
     overflow: auto;
     position: absolute;
     top: 9%;
-    left: 5%; /* Align with sidebar width */
-    width: 95%; /* Take remaining width */
-    height: 91%; /* Take remaining height */
-    overflow-y: auto; /* Add scrolling if content overflows */
+    left: 5%;
+    width: 95%;
+    height: 91%;
+    overflow-y: auto;
     box-sizing: border-box;
-    /* max-width: 95%; */
 }
 
 #freight .container-freight {
     display: flex;
     flex-direction: column;
     width: auto;
-    /* padding: 10px; */
+    padding: 10px;
     background-color: #ffffff;
     /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); */
     border-radius: 20px;
@@ -46,25 +39,29 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    width: auto;
+    width: 95%;
     gap: 10px;
     margin-top: 20px;
-    margin-left: 30px;
+    margin: 30px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 #freight #shipmentForm label {
     font-size: 16px;
     font-weight: bold;
     color: #333;
-    width: auto;
+    width: 30%;
     align-self: self-start;
 }
 
 #shipmentForm input[type="text"],
 #shipmentForm input[type="number"] {
-    width: 400px;
+    width: 25%;
     padding: 10px;
-    font-size: 14px;
+    font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
@@ -86,7 +83,7 @@
     font-size: 18px;
     font-weight: bold;
     transition: background-color 0.3s ease;
-    /* margin-left: 20px; */
+    margin: 20px;
     align-self: self-start;
 }
 
@@ -103,12 +100,13 @@
 
 /* Table Wrapper */
 #freight .table-wrapper {
-    /* margin-top: 20px; */
-    width:100%;
+    width:95%;
     background-color: #ffffff;
-    /* padding: 20px; */
-    /* border-radius: 12px; */
-    /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
+    margin: 30px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow-x: auto;
 }
 
@@ -121,11 +119,10 @@
     border-collapse: collapse;
     text-align: center;
     width: 98%;
-    padding: 10px;
+    /* padding: 15px; */
     background-color: #ffffff;
     border-radius: 10px;
-    margin-top: 20px;
-    margin-left: 10px;
+    /* margin: 10px; */
 }
 
 #freight #resultsTable th,
@@ -137,11 +134,11 @@
 #freight #resultsTable th {
     background-color: #ddd;
     color: black;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 #freight #resultsTable td {
-    font-size: 14px;
+    font-size: 16px;
 }
 .edit-icon {
     color: #007bff;

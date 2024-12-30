@@ -41,7 +41,7 @@ const Navbar = ({toggleSidebar, isCollapsed})=>{
         else if(path === '/reports'){
             return Reports;
         }
-        else if(path === '/'){
+        else if(path === '/generate-bill'){
             return Billing;
         }
         else if(path === '/transactions'){

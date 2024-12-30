@@ -105,14 +105,6 @@ const Freight = () => {
 
     return (
         <div id="freight">
-            {/* <div className="header-buttons">
-            <button className="home-button" onClick={() => navigate("/login-form")}>
-                    Home
-                </button>
-                <button className="back-button" onClick={() => navigate(-1)}>
-                    Back
-                </button>
-            </div> */}
             {/* <h1>Freight Master</h1> */}
             <div className="container-freight">
                 <form id="shipmentForm" onSubmit={handleFormSubmit}>
@@ -147,7 +139,7 @@ const Freight = () => {
                     <p>{submitMessage}</p>
                 </form>
                 <div className="table-wrapper" id="results">
-                    <h2>Your Current Rates</h2>
+                    <h2>Current Rates</h2>
                     <table id="resultsTable">
                         <thead>
                             <tr>

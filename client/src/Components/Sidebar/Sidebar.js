@@ -43,6 +43,10 @@ const Sidebar = () => {
       navigate('/transactions');
     }
 
+    const handleBilling = () =>{
+      navigate('/generate-bill');
+    }
+
   return (
     <aside className={`sidebar`}>
       <ul className="sidebar-menu">
@@ -66,7 +70,7 @@ const Sidebar = () => {
           <FaChartBar className="icon" />
           <span>Reports</span>
         </li>
-        <li className="sidebar-item">
+        <li className="sidebar-item" onClick={handleBilling}>
           <FaMoneyBill className="icon" />
           <span>Billing</span>
         </li>

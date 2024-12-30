@@ -64,7 +64,7 @@ const Transactions = () => {
 
   return (
     <div id="transactions">
-      <h1>Acknowledged Trucks</h1>
+      {/* <h1>Acknowledged Trucks</h1> */}
 
       <div className="form-group">
         <label htmlFor="start-date">Start Date:</label>
@@ -93,6 +93,7 @@ const Transactions = () => {
       {errorMessage && <div id="error-message" className="error-message">{errorMessage}</div>}
       {noDataMessage && <div className="no-data-message">{noDataMessage}</div>}
 
+      <div className="transaction-ack">
       {Object.keys(groupedTransactions).length > 0 && !noDataMessage && (
         <div className="table-wrapper">
           {Object.entries(groupedTransactions).map(([date, trucks], index) => (
@@ -148,6 +149,7 @@ const Transactions = () => {
           ))}
         </div>
       )}
+      </div>
     </div>
   );
 };
