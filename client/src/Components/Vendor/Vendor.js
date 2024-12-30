@@ -7,7 +7,7 @@ const getVendorDataUrl = "http://localhost:5000/logistics/list-vendor";
 const insertVendorDataUrl = "http://localhost:5000/logistics/add-vendor";
 
 const Vendor = () => {
-    // companyName  companyOwner  tdsRate pan GST
+    
     const [result, setResult] = useState([]);
     const [error, setError] = useState(false);
     const [formData, setFormData] = useState({
@@ -28,8 +28,8 @@ const Vendor = () => {
         try {
             setError(false);
             const response = await axios.get(getVendorDataUrl);
-            console.log("response:::>", response.data)
-            setResult(response.data || []);
+            console.log("response:::>", response.data.resultData)
+            setResult(response.data.resultData || []);
         } catch (error) {
             setError(true);
             console.error("Error while fetching data:", error);
