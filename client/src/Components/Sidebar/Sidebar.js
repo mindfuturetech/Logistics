@@ -26,6 +26,9 @@ const Sidebar = () => {
     const handleReports = () =>{
         navigate('/reports');
     };
+    const handleBusiness = () =>{
+        navigate('/business');
+    };
 
     const handleFreight = () =>{
         navigate('/freight');
@@ -66,11 +69,11 @@ const Sidebar = () => {
           <FaUserTie className="icon" />
           <span>Vendor Master</span>
         </li>
-        <li className="sidebar-item" onClick={handleReports}>
+        <li className="sidebar-item repo" onClick={handleReports}>
           <FaChartBar className="icon" />
           <span>Reports</span>
         </li>
-        <li className="sidebar-item" onClick={handleBilling}>
+        <li className="sidebar-item bill" onClick={handleBilling}>
           <FaMoneyBill className="icon" />
           <span>Billing</span>
         </li>
@@ -78,9 +81,9 @@ const Sidebar = () => {
           <FaMoneyCheckAlt className="icon" />
           <span>Transactions</span>
         </li>
-        <li className="sidebar-item">
+        <li className="sidebar-item" onClick={handleBusiness}>
           <FaClipboard className="icon" />
-          <span>Expenses</span>
+          <span>Business</span>
         </li>
       </ul>
     </aside>

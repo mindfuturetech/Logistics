@@ -4,6 +4,7 @@
     align-items: center;
 } */
 
+
 .reports-container {
     position: absolute;
     top: 9%;
@@ -228,7 +229,19 @@ select:focus {
     border: 1px solid #ddd;
     border-radius: 4px;
   }
-  
+
+  #grandTotal{
+    font-weight: bolder;
+  }
+  tfoot {
+    background-color: #f5f5f5;
+    font-weight: bold;
+  }
+
+  tfoot td {
+    border-top: 2px solid #ddd;
+  }
+
   @media (max-width: 768px) {
     .reports-container {
       left: 9%;

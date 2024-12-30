@@ -77,6 +77,7 @@ select:focus {
 
 /* Buttons */
 .signup-button{
+  margin-top: 10px;
   width: 100%;
   padding: 10px 10px;
   font-size: 15px;
@@ -97,19 +98,6 @@ p {
   text-align: center;
   margin-top: 13px;
 }
-
-/* Links */
-
-/* Error message styling */
-/* .error-message {
-  color: red;
-  font-size: 14px;
-  margin-top: -10px;
-  margin-bottom: 10px;
-  text-align: left;
-} */
-
-
 
 /* Responsive Design */
 @media (max-width: 768px) {

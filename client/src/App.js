@@ -61,6 +61,12 @@ function App() {
             path='/generate-bill' 
             element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} 
           />
+
+          <Route
+            path='/business' 
+            element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} 
+          />
+        
         </Routes>
       </div>
     </Router>

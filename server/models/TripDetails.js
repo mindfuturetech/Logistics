@@ -11,10 +11,6 @@ const tripDetailsSchema = new mongoose.Schema({
         required:true,
         trim:true
     },
-    Date:{
-        type:Date,
-        required:true
-    },
     DriverName:{
         type:String,
         required:true,
@@ -46,13 +42,11 @@ const tripDetailsSchema = new mongoose.Schema({
     },
     ActualWeight:{
         type:Number,
-        required:true,
-        default:null
+        default:0
     },
     DifferenceInWeight:{
         type:Number,
-        required:true,
-        default:null
+        default:0
     },
     Freight:{
         type:Number,
@@ -67,6 +61,10 @@ const tripDetailsSchema = new mongoose.Schema({
         required:true
     },
     DieselSlipNumber:{
+        type:Number,
+        required:true
+    },
+    TDS_Rate:{
         type:Number,
         required:true
     },
@@ -96,21 +94,30 @@ const tripDetailsSchema = new mongoose.Schema({
         type:Number,
         required:true
     },
+    BillId:{
+        type:Number,
+        default:0
+    },
     DieselSlipImage:{
-        filepath:{type:String}
+        filepath:{type:String,default:null},
+        originalname:{type:String,default:null}
     },
     LoadingAdvice:{
-        filepath:{type:String}
+        filepath:{type:String,default:null},
+        originalname:{type:String,default:null}
     },
     InvoiceCompany:{
-        filepath:{type:String}
+        filepath:{type:String,default:null},
+        originalname:{type:String,default:null}
     },
     WeightmentSlip:{
-        filepath:{type:String}
+        filepath:{type:String,default:null},
+        originalname:{type:String,default:null}
     },
 
 
 },{timestamps:true});
+
 
 
 module.exports = mongoose.model('TripDetails',tripDetailsSchema);
