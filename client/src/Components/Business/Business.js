@@ -20,6 +20,9 @@ const Business = () => {
   const [truckQuery, setTruckQuery] = useState('');
   const [showTruckDropdown, setShowTruckDropdown] = useState(false);
   const [tableData, setTableData] = useState([]);
+  const [destinations, setDestinations] = useState([]);
+  
+  let grandTotal= 0;
 
   const handleDownload = async (id, field, originalname) => {
     try {
@@ -95,6 +98,39 @@ const Business = () => {
       ...filters,
       [e.target.name]: e.target.value
     });
+  };
+
+
+  const fetchDestinationData = async ()=>{
+    try {
+      const response = await axios.get('/api/destination');
+  
+      setDestinations(response.data.destinationData);
+      console.log(destinations);
+
+    } catch (error) {
+      console.error('Error fetching destination data:', error);
+    }    
+  }
+
+  
+  const calculateTotal = (row, rate) => {
+      // const currentRecord = destinations.filter(destination => 
+      //         destination.from.toLowerCase() === row.toLowerCase() &&
+      //         destination.to.toLowerCase() === row.toLowerCase()
+      //     )
+
+    const freight = parseFloat(row.Freight) || 0;
+    const differenceInWeight = parseFloat(row.DifferenceInWeight) || 0;
+    const dieselAmount = parseFloat(row.DieselAmount) || 0;
+    const advance = parseFloat(row.Advance) || 0;
+    const toll = parseFloat(row.Toll) || 0;
+    const adblue = parseFloat(row.Adblue) || 0;
+    const greasing = parseFloat(row.Greasing) || 0;
+
+    grandTotal+=freight - (differenceInWeight * rate) - dieselAmount - advance - toll - adblue - greasing;
+    
+    return freight - (differenceInWeight * rate) - dieselAmount - advance - toll - adblue - greasing;
   };
 
   const handleSubmit = async (e) => {
@@ -240,7 +276,7 @@ const Business = () => {
         <div className="table-box">
           <div className="table-responsive">
             <table>
-              <thead>
+              <thead id='headerRow'>
                 <tr>
                   <th>Truck Number</th>
                   <th>DO Number</th>
@@ -264,6 +300,7 @@ const Business = () => {
                   <th>Toll</th>
                   <th>Adblue</th>
                   <th>Greasing</th>
+                  <th>Total</th>
                   <th>Diesel Slip Image</th>
                   <th>Loading Advice</th>
                   <th>Invoice Company</th>
@@ -271,7 +308,12 @@ const Business = () => {
                 </tr>
               </thead>
               <tbody>
-                {tableData.map(row => (
+                {tableData.map(row => {
+                  const destinationRate = destinations.find(
+                    dest => dest.from.toLowerCase() === row.DestinationFrom.toLowerCase() && 
+                            dest.to.toLowerCase() === row.DestinationTo.toLowerCase()
+                  )?.rate || 0;
+                  return(
                   <tr key={row._id}>
                     <td>{row.TruckNumber}</td>
                     <td>{row.DONumber}</td>
@@ -295,6 +337,7 @@ const Business = () => {
                     <td>{row.Toll}</td>
                     <td>{row.Adblue}</td>
                     <td>{row.Greasing}</td>
+                    <td>{calculateTotal(row, destinationRate)}</td>
                     {['DieselSlipImage', 'LoadingAdvice', 'InvoiceCompany', 'WeightmentSlip'].map(field => (
                       <td key={field}>
                         {row[field]?.filepath ? (
@@ -310,8 +353,14 @@ const Business = () => {
                       </td>
                     ))}
                   </tr>
-                ))}
+                )})}
+                    <tr>
+                      <td colSpan={22}></td>
+                      <td style={{ fontWeight: 'bold', textAlign:'left'}}>{grandTotal.toFixed(2)}</td> 
+                    </tr>           
               </tbody>
+ 
+  
             </table>
           </div>
         </div>

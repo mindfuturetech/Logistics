@@ -390,7 +390,7 @@ const Reports = () => {
         <div className="table-box">
           <div className="table-responsive">
             <table>
-              <thead>
+              <thead id='sticky-header'>
                 <tr>
                   <th>Truck Number</th>
                   <th>DO Number</th>
