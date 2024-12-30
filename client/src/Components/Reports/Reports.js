@@ -95,13 +95,8 @@ const Reports = () => {
       console.log(truckNumbers);
 
     } catch (error) {
-      if(error.response){
-        if(error.response.data.message){
-          alert(error.response.data.message);
-        }
-      }
       console.error('Error fetching truck numbers:', error);
-      alert('Error fetching truck numbers')
+
     }
   };
 
