@@ -115,5 +115,4 @@ const tripDetailsSchema = new mongoose.Schema({
 },{timestamps:true});
 
 
-
 module.exports = mongoose.model('TripDetails',tripDetailsSchema);
