@@ -52,7 +52,7 @@ async function ListAllTransactions(req, res) {
                 diesel: truck.DieselAmount,
                 advance: truck.Advance || 0,
                 toll: truck.Toll,
-                truck.TDS_Rate,
+                tds: truck.TDS_Rate,
                 short,
                 other_charges: otherCharges,
                 transaction_status: truck.TransactionStatus,
