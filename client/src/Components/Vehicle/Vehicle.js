@@ -197,7 +197,7 @@ const Vehicle = () => {
                 {result.map((vehicle, index) => (
                     <div className="tile" key={index}>
                         <div className="tile-header">
-                            <h2>{vehicle.truck_no}</h2>
+                            <h3>{(vehicle.truck_no).split(' ').join('')}</h3>
                             <b>{vehicle.make}</b>
                             <i>{vehicle.companyOwner}</i>
                         </div>
