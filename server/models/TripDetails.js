@@ -11,10 +11,6 @@ const tripDetailsSchema = new mongoose.Schema({
         required:true,
         trim:true
     },
-    Date:{
-        type:Date,
-        required:true
-    },
     DriverName:{
         type:String,
         required:true,
@@ -46,13 +42,11 @@ const tripDetailsSchema = new mongoose.Schema({
     },
     ActualWeight:{
         type:Number,
-        required:true,
-        default:null
+        default:0
     },
     DifferenceInWeight:{
         type:Number,
-        required:true,
-        default:null
+        default:0
     },
     Freight:{
         type:Number,
@@ -70,15 +64,7 @@ const tripDetailsSchema = new mongoose.Schema({
         type:Number,
         required:true
     },
-    Advance:{
-        type:Number,
-        required:true
-    },
-    Toll:{
-        type:Number,
-        required:true 
-    },
-    TDS:{
+    TDS_Rate:{
         type: Number,
         required: true,
         validate: {
@@ -88,6 +74,14 @@ const tripDetailsSchema = new mongoose.Schema({
             message: "Value must be a positive number",
         },
     },
+    Advance:{
+        type:Number,
+        required:true
+    },
+    Toll:{
+        type:Number,
+        required:true 
+    },
     Adblue:{
         type:Number,
         required:true
@@ -96,17 +90,25 @@ const tripDetailsSchema = new mongoose.Schema({
         type:Number,
         required:true
     },
+    BillId:{
+        type:Number,
+        default:0
+    },
     DieselSlipImage:{
-        filepath:{type:String}
+        filepath:{type:String,default:null},
+        originalname:{type:String,default:null}
     },
     LoadingAdvice:{
-        filepath:{type:String}
+        filepath:{type:String,default:null},
+        originalname:{type:String,default:null}
     },
     InvoiceCompany:{
-        filepath:{type:String}
+        filepath:{type:String,default:null},
+        originalname:{type:String,default:null}
     },
     WeightmentSlip:{
-        filepath:{type:String}
+        filepath:{type:String,default:null},
+        originalname:{type:String,default:null}
     },
 
 

@@ -31,7 +31,7 @@ async function ListAllTransactions(req, res) {
         }
 
         const resultData = fetchedList.map((truck) => {
-            const tds = 10; // Example static value
+            // const tds = 10; // Example static value
             const short = 12; // Example static value
             const otherCharges = 15; // Example static value
 
@@ -39,8 +39,8 @@ async function ListAllTransactions(req, res) {
             // let Dest_To = truck.DestinationTo
 
             return {
-                date: truck.Date,
-                time: truck.Date,
+                date: truck.createdAt,
+                time: truck.createdAt,
                 vendor: truck.Vendor,
                 truck_no: truck.TruckNumber,
                 destination_to: truck.DestinationTo,
@@ -52,12 +52,12 @@ async function ListAllTransactions(req, res) {
                 diesel: truck.DieselAmount,
                 advance: truck.Advance || 0,
                 toll: truck.Toll,
-                tds,
+                truck.TDS_Rate,
                 short,
                 other_charges: otherCharges,
                 transaction_status: truck.TransactionStatus,
                 amount: truck.Freight - (truck.DieselAmount + truck.Advance + truck.Toll 
-                    + tds + short + otherCharges),
+                    + truck.TDS_Rate + short + otherCharges),
             };
         });
 

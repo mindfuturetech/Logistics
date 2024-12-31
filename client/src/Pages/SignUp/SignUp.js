@@ -84,7 +84,7 @@ const SignUp = () => {
             <p>Already have an account?{' '}
                 <span
                     onClick={()=>navigate('/')}
-                    style={{cursor:'pointer', color:'blue', textDecoration:'underline'}}
+                    style={{cursor:'pointer', color:'blue'}}
                 >Login</span>    
             </p>
       

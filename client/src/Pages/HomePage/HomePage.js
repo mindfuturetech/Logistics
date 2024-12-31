@@ -13,6 +13,7 @@ import Vendor from '../../Components/Vendor/Vendor';
 import Transactions from '../../Components/Transactions/Transactions';
 import GenerateBill from '../../Components/GenerateBill/GenerateBill';
 
+import Business from '../../Components/Business/Business';
 
 axios.defaults.baseURL = 'http://localhost:5000/logistics';
 
@@ -46,6 +47,9 @@ const HomePage = () => {
       case '/generate-bill':
         setCurrentComponent(<GenerateBill />);
         break;
+      case '/business':
+        setCurrentComponent(<Business />);
+        break;  
       default:
         setCurrentComponent(null); // Handle any other routes if necessary
         break;

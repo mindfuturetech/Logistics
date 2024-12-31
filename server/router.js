@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-
+const imageUpload = require('./multer/imageMulter')
 const signup = require('./controller/signUp');
 const login= require('./controller/login');
 const resetPassword =  require('./controller/resetPassword');
@@ -19,7 +19,7 @@ const path = require("path");
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        const truckNo = req.body.truckNo;
+        const truckNo = req.body.truck_no;
         const dir = path.join(__dirname, "upload", truckNo);
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir, { recursive: true });
@@ -35,12 +35,20 @@ const upload = multer({
     storage: storage,
 });
 
+const {reports, getTruckData, getVendorData, getDestinationData , getTableData, updateTripData, downloadFile} = require('./controller/reports');
 //Routes
 router.get('/check-auth',auth);
 router.post('/signup',signup);
 router.post('/login',login);
 router.post('/logout', logout);  // Add this line
 router.post('/reset-password',resetPassword);
+router.post('/reports',reports);
+router.get('/api/trucks',getTruckData);
+router.get('/api/vendors',getVendorData);
+router.get('/api/destination', getDestinationData);
+router.get('/api/reports', getTableData);
+router.post('/api/reports/:id',imageUpload, updateTripData);
+router.get(`/api/download/:id/:field`, downloadFile )
 
 // freight
 router.get("/list-freight", freightController.ListFreight);

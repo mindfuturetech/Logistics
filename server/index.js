@@ -1,15 +1,9 @@
 require('dotenv').config();
-
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const bcrypt = require('bcryptjs');
-const mongoose = require('mongoose');
 const route = require('./router');
-const multer = require('./multer/multer')
-
-
 const app = express();
 const connectDB = require('./config/db');
 
@@ -26,6 +20,8 @@ app.use(cookieParser());
 
 
 connectDB();
+
+
 
 //Route
 app.use('/logistics',route);

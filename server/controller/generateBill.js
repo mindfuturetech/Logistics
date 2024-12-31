@@ -88,7 +88,7 @@ async function GeneratePDFBill(req, res) {
         );
         const updatedTrucks = await Promise.all(updatePromises);
         console.log("Updated tripDeatils to Billed");
-        const TDS = 10; // Example static value
+        // const TDS = 10; // Example static value
         const Short = 12; // Example static value
         const O_Chg = 15; // Example static value
 
@@ -107,11 +107,11 @@ async function GeneratePDFBill(req, res) {
             truck.DieselAmount,
             truck.Advance || 0,
             truck.Toll || 0,
-            TDS,
+            truck.TDS_Rate || 0,
             Short,
             O_Chg,
             truck.Amount = truck.Freight - (truck.DieselAmount + truck.Advance + truck.Toll
-                + TDS + Short + O_Chg),
+                + truck.TDS_Rate + Short + O_Chg),
             // truck.TruckType,
             // truck.TransactionStatus,
             // truck.DieselSlipNumber,

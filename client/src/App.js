@@ -3,8 +3,6 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import './App.css';
-import axios from 'axios';
-import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 
 import {useAuth} from './Auth/AuthContext';
@@ -14,8 +12,6 @@ import HomePage from './Pages/HomePage/HomePage';
 import Loading from './Components/Loading/Loading';
 
 function App() {
-
-  // const {isAuthenticated, setIsAuthenticated, isLoading, setIsLoading} = useAuth(); 
   
   const {isLoading} = useAuth();
   const isAuthenticated = Cookies.get('isAuthenticated') === 'true';
@@ -65,6 +61,11 @@ function App() {
             path='/generate-bill' 
             element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} 
           />
+          <Route
+            path='/business' 
+            element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} 
+          />
+        
         </Routes>
       </div>
     </Router>
