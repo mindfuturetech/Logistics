@@ -20,7 +20,7 @@ async function ListAllTransactions(req, res) {
             }).sort({createdAt: -1});
         } else {
             fetchedList = await TripDetailsModel.find({
-                Date: { $gte: start, $lte: end },
+                createdAt: { $gte: start, $lte: end },
                 TransactionStatus: "Billed"
             }).sort({createdAt: -1});
         }

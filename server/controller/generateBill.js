@@ -6,13 +6,13 @@ async function ListBill(req, res) {
     try {
         console.log("Request Body:", req.body);
 
-        const { startDate, endDate, vendor, truckNo } = req.body;
-        console.log("searchParam::>>>>>>", startDate, endDate, vendor, truckNo);
+        const { startDate, endDate, vendor, truckNumber } = req.body;
+        console.log("searchParam::>>>>>>", startDate, endDate, vendor, truckNumber);
 
         const start = startDate ? new Date(startDate) : null;
         const end = endDate ? new Date(endDate) : null;
         const vendor_s = vendor ? vendor : "";
-        const truckNo_s = truckNo ? truckNo : "";
+        const truckNo_s = truckNumber ? truckNumber : "";
 
         console.log("search::-------", start, end, vendor_s, truckNo_s);
 
