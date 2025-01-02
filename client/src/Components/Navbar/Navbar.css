@@ -66,6 +66,9 @@
     font-weight: 500;
     color: white;
     text-transform: capitalize;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
   
   /* Responsive design */
@@ -86,6 +89,7 @@
   
     .route-name {
       font-size: 1rem;
+      
     }
   }
 

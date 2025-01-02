@@ -18,7 +18,7 @@ const Navbar = ()=>{
     const getRouteName = () =>{
         const path = location.pathname;
         
-        const Home = 'Upload Truck Details';
+        const Home = 'Upload Trip Details';
         const FreightMaster = 'Freight Master';
         const VehicleMaster = 'Vehicle Master';
         const VendorMaster = 'Vendor Master';
@@ -65,10 +65,6 @@ const Navbar = ()=>{
         <nav className='navbar'>
             <div className="navbar-left">
                 <img src={logo} alt="Logo" className="logo" />
-                {/* <button className="nav-button home-button" onClick={handleHome}>
-                    <FaHome className="button-icon" />
-                    <span>Home</span>
-                </button> */}
             </div>
 
             <div className='route-name'>

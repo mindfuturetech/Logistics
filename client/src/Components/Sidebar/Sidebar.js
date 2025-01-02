@@ -55,7 +55,7 @@ const Sidebar = () => {
       <ul className="sidebar-menu">
         <li className="sidebar-item" onClick={handleHome}>
           <FaCloudUploadAlt className="icon" />
-          <span>Upload Truck Details</span>
+          <span>Upload Trip Details</span>
         </li>
         <li className="sidebar-item" onClick={handleFreight}>
           <FaTruck className="icon" />

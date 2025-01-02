@@ -219,7 +219,7 @@ const Vehicle = () => {
                                         {
                                             doc.days_left <= 0 ?
                                             <a
-                                                href={`http://localhost:5000/logistics/download/${vehicle.truck_no}/${key}/${doc.file_path.split("\\").pop().split("-")[1]}`}
+                                                href={`http://localhost:5000/logistics/download/${vehicle.truck_no}/${key}/${doc.file_path ? doc.file_path.split("\\").pop().split("-")[1] : ''}`}
                                                 className="upload-button"
                                                 download
                                             >
