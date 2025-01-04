@@ -15,9 +15,9 @@ export const AuthProvider = ({children}) =>{
         setIsAuthenticated(value);
         if (value) {
             Cookies.set('isAuthenticated', 'true', { 
-                secure: false, 
-                sameSite: 'lax', 
-                expires: 10 })// 10 days;
+                secure: true, 
+                sameSite: 'None', 
+                expires: 1 })// 1 days;
                 console.log(Cookies.get('isAuthenticated'));
             }
         else {
@@ -28,7 +28,7 @@ export const AuthProvider = ({children}) =>{
     useEffect(() => {
         const checkAuthStatus = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/logistics/check-auth', {
+                const response = await axios.get('https://logistics.mindfuturetech.com/logistics/check-auth', {
                     withCredentials: true
                     });
                 if (response.status === 200) {

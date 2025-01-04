@@ -6,7 +6,7 @@ import "./SignUp.css";
 
 import logo from '../../Images/logo.jpg';
 
-axios.defaults.baseURL = 'http://localhost:5000/logistics';       
+axios.defaults.baseURL = 'https://logistics.mindfuturetech.com/logistics';       
 
 const SignUp = () => {
     const [username, setUsername] = useState('');

@@ -9,7 +9,7 @@ import './Login.css';
 import ResetPassword from '../../Components/ResetPassword/ResetPassword';
 
 
-axios.defaults.baseURL = 'http://localhost:5000/logistics';
+axios.defaults.baseURL = 'https://logistics.mindfuturetech.com/logistics';
 
 
 const Login = ()=>{

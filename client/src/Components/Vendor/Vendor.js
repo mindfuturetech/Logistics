@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Vendor.css";
 
-const getVendorDataUrl = "http://localhost:5000/logistics/list-vendor";
-const insertVendorDataUrl = "http://localhost:5000/logistics/add-vendor";
+const getVendorDataUrl = "https://logistics.mindfuturetech.com/logistics/list-vendor";
+const insertVendorDataUrl = "https://logistics.mindfuturetech.com/logistics/add-vendor";
 
 const Vendor = () => {
     

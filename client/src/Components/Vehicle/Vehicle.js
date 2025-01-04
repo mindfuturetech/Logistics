@@ -4,8 +4,8 @@ import { FaDownload, FaUpload } from "react-icons/fa";
 import axios from "axios";
 import "./Vehicle.css";
 
-const getVehicleDataUrl = "http://localhost:5000/logistics/list-vehicle";
-const insertVehicleDataUrl = "http://localhost:5000/logistics/add-vehicle";
+const getVehicleDataUrl = "https://logistics.mindfuturetech.com/logistics/list-vehicle";
+const insertVehicleDataUrl = "https://logistics.mindfuturetech.com/logistics/add-vehicle";
 
 const Vehicle = () => {
     // const navigate = useNavigate();
@@ -219,7 +219,7 @@ const Vehicle = () => {
                                         {
                                             doc.days_left <= 0 ?
                                             <a
-                                                href={`http://localhost:5000/logistics/download/${vehicle.truck_no}/${key}/${doc.file_path ? doc.file_path.split("\\").pop().split("-")[1] : ''}`}
+                                                href={`https://logistics.mindfuturetech.com/logistics/download/${vehicle.truck_no}/${key}/${doc.file_path ? doc.file_path.split("\\").pop().split("-")[1] : ''}`}
                                                 className="upload-button"
                                                 download
                                             >

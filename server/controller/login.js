@@ -18,13 +18,13 @@ const login = async(req,res)=>{
             return res.status(400).json({message:'Invalid password'});
         }
         
-        const token = jwt.sign({userId:user._id, username: user.username},JWT_SECRET,{expiresIn:'10d'});
+        const token = jwt.sign({userId:user._id, username: user.username},JWT_SECRET,{expiresIn:'1d'});
 
         res.cookie('token', token, {
             httpOnly: true,
-            secure: false, //process.env.NODE_ENV === 'production', // Use secure cookies in production
-            sameSite: 'lax',
-            maxAge: 10 * 24 * 60 * 60 * 1000 // 10 days
+            secure: true, //process.env.NODE_ENV === 'production', // Use secure cookies in production
+            sameSite: 'None',
+            maxAge: 1 * 24 * 60 * 60 * 1000 // 1 days
         });
 
         res.status(200).json({message:'Login successful'});

@@ -3,7 +3,7 @@ import { FiUploadCloud } from 'react-icons/fi';
 import './AddTruckDetails.css';
 import '../../Pages/HomePage/HomePage.css'
 import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:5000/logistics';
+axios.defaults.baseURL = 'https://logistics.mindfuturetech.com/logistics';
 
 
 const AddTruckDetails = () => {

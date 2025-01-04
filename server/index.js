@@ -9,7 +9,7 @@ const connectDB = require('./config/db');
 
 // Middleware
 app.use(cors({
-    origin: 'http://localhost:3000', // Your frontend local URL
+    origin: 'https://logistics.mindfuturetech.com', // Your frontend local URL
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'] 
@@ -20,8 +20,6 @@ app.use(cookieParser());
 
 
 connectDB();
-
-
 
 //Route
 app.use('/logistics',route);

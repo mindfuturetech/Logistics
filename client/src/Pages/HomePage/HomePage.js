@@ -15,7 +15,7 @@ import GenerateBill from '../../Components/GenerateBill/GenerateBill';
 
 import Business from '../../Components/Business/Business';
 
-axios.defaults.baseURL = 'http://localhost:5000/logistics';
+axios.defaults.baseURL = 'https://logistics.mindfuturetech.com/logistics';
 
 const HomePage = () => {
 

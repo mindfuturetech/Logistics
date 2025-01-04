@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Transactions.css";
 
-const listTransactionsUrl = "http://localhost:5000/logistics/list-all-transactions";
+const listTransactionsUrl = "https://logistics.mindfuturetech.com/logistics/list-all-transactions";
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([]);

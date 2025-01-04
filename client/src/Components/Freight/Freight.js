@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Freight.css";
 
-const getFreightDataUrl = "http://localhost:5000/logistics/list-freight";
-const insertFreightDataUrl = "http://localhost:5000/logistics/add-freight";
-const updateFreightDataUrl = "http://localhost:5000/logistics/update-freight";
+const getFreightDataUrl = "https://logistics.mindfuturetech.com/logistics/list-freight";
+const insertFreightDataUrl = "https://logistics.mindfuturetech.com/logistics/add-freight";
+const updateFreightDataUrl = "https://logistics.mindfuturetech.com/logistics/update-freight";
 
 const Freight = () => {
 

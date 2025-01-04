@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./GenerateBill.css";
 
-const getBillingDataUrl = "http://localhost:5000/logistics/list-billing";
-const generatePDFBillUrl = "http://localhost:5000/logistics/generate-pdf-bill";
-const getVendorDataUrl = "http://localhost:5000/logistics/list-vendor";
-const getVehicleDataUrl = "http://localhost:5000/logistics/list-vehicle";
+const getBillingDataUrl = "https://logistics.mindfuturetech.com/logistics/list-billing";
+const generatePDFBillUrl = "https://logistics.mindfuturetech.com/logistics/generate-pdf-bill";
+const getVendorDataUrl = "https://logistics.mindfuturetech.com/logistics/list-vendor";
+const getVehicleDataUrl = "https://logistics.mindfuturetech.com/logistics/list-vehicle";
 
 const Bill = () => {
 

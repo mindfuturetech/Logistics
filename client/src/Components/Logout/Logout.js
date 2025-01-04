@@ -5,7 +5,7 @@ import { FaSignOutAlt } from 'react-icons/fa';
 import {useAuth} from '../../Auth/AuthContext';
 import './Logout.css';
 
-axios.defaults.baseURL = 'http://localhost:5000/logistics';
+axios.defaults.baseURL = 'https://logistics.mindfuturetech.com/logistics';
 
 const Logout = ()=>{
     const [isLoading, setIsLoading] = useState(false);

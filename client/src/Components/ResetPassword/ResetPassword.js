@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import './ResetPassword.css';
 
-axios.defaults.baseURL = 'http://localhost:5000/logistics';
+axios.defaults.baseURL = 'https://logistics.mindfuturetech.com/logistics';
 
 const ResetPassword = ({onClose}) => {
     const [username, setUsername] = useState('');
